@@ -1,39 +1,40 @@
-from flask import Flask, request, json, Response
+from flask import Flask, request, json, Response, jsonify
+from flask_cors import CORS
+
+
 app = Flask(__name__)
-
-q_VR= []
-q_SITE = []
+CORS(app)
 
 
-@app.route('/')
-def hello():
-    return "Hello World!"
+q_VR= list()
+q_SITE = list()
 
 
 @app.route('/action', methods=['POST'])
 def action():
-    action = request.args['action']
+    do_action = request.args['action']
     device = request.args['device']
     if device == 'VR':
-        q_VR.append(action)
+        q_VR.append(do_action)
     else:
-        q_SITE.append(action)
-    print(q_VR)
-    print(q_SITE)
-    return json.dumps({'status': 'OK'})
+        q_SITE.append(do_action)
+    print("VR: ", q_VR)
+    print("SITE: ", q_SITE)
+    return jsonify({'status': 'OK'})
 
 
-@app.route('/get_action', methods=['POST'])
+@app.route('/get_action', methods=['GET', 'POST'])
 def get_action():
     device = request.args['device']
     if device == 'VR' and q_VR:
-        return json.dumps({'status': 'OK',
-                           'action': q_VR.pop(0)})
+        print('Отдал')
+        return jsonify({'action': q_VR.pop(0)})
     elif device == 'SITE' and q_SITE:
-        return json.dumps({'status': 'OK',
-                           'action': q_SITE.pop(0)})
+        print('Отдал')
+        return jsonify({'action': q_SITE.pop(0)})
     else:
-        return Response(status=204)
+        print("Empty queue")
+        return jsonify({'action': 'Something went wrong'})
 
 
-app.run(host="26.100.4.13", debug=True)
+app.run(host="26.100.4.13")
