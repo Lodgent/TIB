@@ -10,6 +10,8 @@ using UnityEngine.Networking;
 
 public class WebRequests : MonoBehaviour
 {
+    public AudioSource source;
+
     void Start()
     {
 
@@ -29,15 +31,10 @@ public class WebRequests : MonoBehaviour
         var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
         if (values["action"] == "VineBoom")
         {
+            source.Play();
             Debug.Log(":TheRock:");
         }
 
     }
-    public void PostRequest()
-    {
-        UnityWebRequest request = UnityWebRequest.Post("http://26.100.4.13:5000/action?action=pidge&device=VR", "");
-        request.SendWebRequest();
-
-    }
-
+ 
 }

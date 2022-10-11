@@ -18,8 +18,6 @@ def action():
         q_VR.append(do_action)
     else:
         q_SITE.append(do_action)
-    print("VR: ", q_VR)
-    print("SITE: ", q_SITE)
     return jsonify({'status': 'OK'})
 
 
@@ -27,13 +25,10 @@ def action():
 def get_action():
     device = request.args['device']
     if device == 'VR' and q_VR:
-        print('Отдал')
         return jsonify({'action': q_VR.pop(0)})
     elif device == 'SITE' and q_SITE:
-        print('Отдал')
         return jsonify({'action': q_SITE.pop(0)})
     else:
-        print("Empty queue")
         return jsonify({'action': 'Something went wrong'})
 
 
