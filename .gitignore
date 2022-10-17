@@ -14,7 +14,7 @@ Library/
 
 flask/venv
 flask/.idea
-logging.log
+flask/logging.log
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
