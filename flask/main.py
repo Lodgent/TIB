@@ -1,9 +1,10 @@
 from flask import Flask, request, json, Response, jsonify
 from flask_cors import CORS
-
+import logging
 
 app = Flask(__name__)
 CORS(app)
+logging.basicConfig(filename='logging.log', level=logging.DEBUG)
 
 
 q_VR= list()

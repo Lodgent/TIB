@@ -8,9 +8,10 @@ using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
 public class GiveCommand : MonoBehaviour
 {
-    
+    public string action;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,8 @@ public class GiveCommand : MonoBehaviour
 
     public void PostRequest()
     {
-        UnityWebRequest request = UnityWebRequest.Post("http://26.100.4.13:5000/action?action=pidge&device=SITE", "");
+        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + action + "&device=SITE";
+        UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
         request.SendWebRequest();
 
     }
