@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 public class HostPort
 {
@@ -18,7 +19,7 @@ public class WebRequests : MonoBehaviour
 {
     public AudioSource source;
 
-    public GameObject Button1;
+    public GameObject EscapeButton;
 
     void Start()
     {
@@ -37,25 +38,36 @@ public class WebRequests : MonoBehaviour
             result = streamReader.ReadToEnd();
         }
         var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
-        if (values["action"] == "VineBoom")
+        var commands = values["action"].Split(':');
+        if (commands[0] == "VineBoom")
         {
             source.Play();
             Debug.Log(":TheRock:");
         }
-
-        if (values["action"] == "Button1")
+        else if (commands[0] == "DeleteEscapeButton")
         {
-            if (Button1.activeSelf)
-            {
-                Button1.SetActive(false);
-            }
-            else
-            {
-                Button1.SetActive(true);
-            }
-
+            EscapeButton.SetActive(false);
         }
-
+        else if (commands[0] == "SpawnEscapeButton")
+        {
+            var coords = commands[1].Split(',');
+            var x = float.Parse(coords[0]);
+            var y = float.Parse(coords[1]);
+            var z = float.Parse(coords[2]);
+            EscapeButton.transform.position = new Vector3(x, y, z);
+            if (y == 0f)
+            {
+                EscapeButton.transform.rotation = Quaternion.Euler(0, 0, 0);
+                EscapeButton.transform.position = new Vector3(EscapeButton.transform.position.x,
+                    EscapeButton.transform.position.y + 0.5f, EscapeButton.transform.position.z);
+            }
+            else if (y == 10f)
+            {
+                EscapeButton.transform.rotation = Quaternion.Euler(180, 0, 0);
+                EscapeButton.transform.position = new Vector3(EscapeButton.transform.position.x,
+                    EscapeButton.transform.position.y - 0.5f, EscapeButton.transform.position.z);
+            }
+            EscapeButton.SetActive(true);
+        }
     }
- 
 }
