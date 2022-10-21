@@ -3,39 +3,9 @@
  <head>
    <title>!DOCTYPE</title>
    <meta charset="utf-8">
+   <link rel="stylesheet" href="style.css">
  </head>
  <body>
-  <button onclick="POSTRequest()">Отдать</button>
-    <div id="min"></div>
-
-  <script>
-    const requestURL = 'http://26.100.4.13:5000'
-
-    setInterval(function GETRequest() {
-    return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-
-        xhr.open('POST', 'http://26.100.4.13:5000/get_action?device=SITE');
-
-        xhr.onload = () => {
-            var a = JSON.parse(xhr.response)
-            if(JSON.stringify(a) != '{"action":"Something went wrong"}'){
-              document.getElementById("min").innerHTML = JSON.stringify(a);
-              var audio = new Audio('VineBoom.mp3');
-              audio.loop = false;
-              audio.play()
-            }
-        }
-        xhr.send()
-    })}, 1000)
-
-    function POSTRequest() {
-    return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-
-        xhr.open('POST', 'http://26.100.4.13:5000/action?action=VineBoom&device=VR');
-        xhr.send()
-    })}
-  </script>
+    <script src="main.js"></script>
  </body> 
 </html>
