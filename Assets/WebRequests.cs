@@ -17,7 +17,7 @@ public class HostPort
 
 public class WebRequests : MonoBehaviour
 {
-    public AudioSource source;
+    public AudioSource SpawnObject;
 
     public GameObject EscapeButton;
 
@@ -39,18 +39,14 @@ public class WebRequests : MonoBehaviour
         }
         var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
         var commands = values["action"].Split(':');
-        if (commands[0] == "VineBoom")
-        {
-            source.Play();
-            Debug.Log(":TheRock:");
-        }
-        else if (commands[0] == "SpawnEscapeButton")
+        if (commands[0] == "SpawnEscapeButton")
         {
             var coords = commands[1].Split(',');
             var x = float.Parse(coords[0]);
             var y = float.Parse(coords[1]);
             var z = float.Parse(coords[2]);
             EscapeButton.transform.position = new Vector3(x, y, z);
+            SpawnObject.Play();
             if (y == 0f)
             {
                 EscapeButton.transform.rotation = Quaternion.Euler(0, 0, 0);

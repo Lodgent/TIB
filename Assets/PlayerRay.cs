@@ -9,6 +9,8 @@ public class PlayerRay : MonoBehaviour
     // Start is called before the first frame update
     public LineRenderer lineRenderer;
     public GameObject EscapeButton;
+    public AudioSource LaserOn;
+    public AudioSource LaserSend;
     void Start()
     {
         
@@ -30,6 +32,8 @@ public class PlayerRay : MonoBehaviour
         RaycastHit hit;
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, transform.position);
+        if(SteamVR_Actions._default.TouchpadLaserTrigger[SteamVR_Input_Sources.RightHand].stateDown)
+            LaserOn.Play();
         if (SteamVR_Actions._default.TouchpadLaserTrigger[SteamVR_Input_Sources.RightHand].state)
         {
             if (Physics.Raycast(ray, out hit))
@@ -44,6 +48,7 @@ public class PlayerRay : MonoBehaviour
                         command = "GiveEscapeButton";
                         EscapeButton.SetActive(false);
                     }
+                    LaserSend.Play();
                     PostRequest(command);
                 }
                     
