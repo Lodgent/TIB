@@ -6,7 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - projectile
-  - Button1
+  - EscapeButton
   layers:
   - Default
   - TransparentFX

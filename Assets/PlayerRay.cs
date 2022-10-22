@@ -7,6 +7,7 @@ public class PlayerRay : MonoBehaviour
 {
     // Start is called before the first frame update
     public LineRenderer lineRenderer;
+    public GameObject EscapeButton;
     void Start()
     {
         
@@ -26,8 +27,18 @@ public class PlayerRay : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 //Debug.Log(hit.collider.gameObject);
-                lineRenderer.enabled = true;
                 lineRenderer.SetPosition(1, hit.point);
+                if (SteamVR_Actions._default.TouchPadLasterButtonA[SteamVR_Input_Sources.RightHand].stateUp)
+                {
+                    string command = hit.collider.gameObject.name;
+                    if (hit.collider.gameObject.name == "Stem" || hit.collider.gameObject.name == "Push")
+                    {
+                        command = "GiveEscapeButton";
+                        EscapeButton.SetActive(false);
+                    }
+                    
+                }
+                    
             }
             else
             {
