@@ -1,4 +1,4 @@
-from flask import Flask, request, json, Response, jsonify
+from flask import Flask, request, json, Response, jsonify, render_template
 from flask_cors import CORS
 import logging
 
@@ -9,6 +9,11 @@ logging.basicConfig(filename='logging.log', level=logging.DEBUG)
 
 q_VR= list()
 q_SITE = list()
+
+
+@app.route('/', methods=['GET'])
+def start():
+    return render_template('index.html')
 
 
 @app.route('/action', methods=['POST'])
