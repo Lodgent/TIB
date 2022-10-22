@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class PlayerRay : MonoBehaviour
 {
@@ -15,20 +16,27 @@ public class PlayerRay : MonoBehaviour
     void Update()
     {
         Ray ray = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(transform.position, transform.forward*100f, Color.yellow);
+        Debug.DrawRay(transform.position, transform.forward * 100f, Color.yellow);
         Vector3 endPosition = transform.position + (transform.forward * 100f);
         RaycastHit hit;
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, transform.position);
-        if (Physics.Raycast(ray, out hit))
+        if (SteamVR_Actions._default.TouchpadLaserTrigger[SteamVR_Input_Sources.RightHand].state)
         {
-            //Debug.Log(hit.collider.gameObject);
-            lineRenderer.enabled = true;
-            lineRenderer.SetPosition(1, hit.point);
+            if (Physics.Raycast(ray, out hit))
+            {
+                //Debug.Log(hit.collider.gameObject);
+                lineRenderer.enabled = true;
+                lineRenderer.SetPosition(1, hit.point);
+            }
+            else
+            {
+                lineRenderer.SetPosition(1, endPosition);
+            }
         }
         else
         {
-            lineRenderer.SetPosition(1, endPosition);
+            lineRenderer.enabled = false;
         }
     }
 }
