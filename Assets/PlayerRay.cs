@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using Valve.VR;
 
 public class PlayerRay : MonoBehaviour
@@ -11,6 +12,13 @@ public class PlayerRay : MonoBehaviour
     void Start()
     {
         
+    }
+    public void PostRequest(string action)
+    {
+        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + action + "&device=SITE";
+        UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
+        request.SendWebRequest();
+
     }
 
     // Update is called once per frame
@@ -36,7 +44,7 @@ public class PlayerRay : MonoBehaviour
                         command = "GiveEscapeButton";
                         EscapeButton.SetActive(false);
                     }
-                    
+                    PostRequest(command);
                 }
                     
             }

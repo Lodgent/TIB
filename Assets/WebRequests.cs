@@ -44,10 +44,6 @@ public class WebRequests : MonoBehaviour
             source.Play();
             Debug.Log(":TheRock:");
         }
-        else if (commands[0] == "DeleteEscapeButton")
-        {
-            EscapeButton.SetActive(false);
-        }
         else if (commands[0] == "SpawnEscapeButton")
         {
             var coords = commands[1].Split(',');

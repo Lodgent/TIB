@@ -633,6 +633,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &748672713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748672702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e75297e6ff08d4b8c9ba8e89e84442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: 
 --- !u!1 &926209321
 GameObject:
   m_ObjectHideFlags: 0
