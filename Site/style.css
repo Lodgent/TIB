@@ -21,6 +21,8 @@ li{
 
 .game_field{
     width: 75%;
+    min-height: 200px;
+    background-color: black;
     margin-right: 10px;
 }
 
@@ -32,4 +34,16 @@ li{
 .game{
     margin: 0 auto;
     display: flex;
+}
+
+.active{
+    background-color:brown;
+}
+
+.hidden{
+    display: none;
+}
+
+.ceil li{
+    background-color: red;
 }
