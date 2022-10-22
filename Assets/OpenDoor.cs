@@ -10,6 +10,7 @@ public class OpenDoor : MonoBehaviour
     public AudioSource DoorOpen;
     public AudioSource DoorOpenMechanic;
     public bool isTriggered = false;
+    public Light light;
     void Start()
     {
         
@@ -34,6 +35,7 @@ public class OpenDoor : MonoBehaviour
     IEnumerator waiter()
     {
         DoorOpen.Play();
+        light.color = Color.green;
         yield return new WaitForSeconds(2);
         DoorOpenMechanic.Play();
         for (int i = 0; i < 50; i++)
