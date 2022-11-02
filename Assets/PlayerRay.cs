@@ -11,9 +11,12 @@ public class PlayerRay : MonoBehaviour
     public GameObject EscapeButton;
     public AudioSource LaserOn;
     public AudioSource LaserSend;
+    private bool laserOnCooldown;
     void Start()
     {
-        
+        LaserOn.volume = 0.5f;
+        lineRenderer.material.color = Color.green;
+        laserOnCooldown = true;
     }
     public void PostRequest(string action)
     {
@@ -21,6 +24,14 @@ public class PlayerRay : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
         request.SendWebRequest();
 
+    }
+    IEnumerator WaitForColor(LineRenderer line)
+    {
+        line.material.color = Color.red;
+        laserOnCooldown = false;
+        yield return new WaitForSeconds(2);
+        laserOnCooldown = true;
+        line.material.color = Color.green;
     }
 
     // Update is called once per frame
@@ -32,16 +43,16 @@ public class PlayerRay : MonoBehaviour
         RaycastHit hit;
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, transform.position);
-        if(SteamVR_Actions._default.TouchpadLaserTrigger[SteamVR_Input_Sources.RightHand].stateDown)
+        if (SteamVR_Actions._default.TouchpadLaserTrigger[SteamVR_Input_Sources.RightHand].stateDown)
             LaserOn.Play();
         if (SteamVR_Actions._default.TouchpadLaserTrigger[SteamVR_Input_Sources.RightHand].state)
         {
             if (Physics.Raycast(ray, out hit))
             {
-                //Debug.Log(hit.collider.gameObject);
                 lineRenderer.SetPosition(1, hit.point);
-                if (SteamVR_Actions._default.TouchPadLasterButtonA[SteamVR_Input_Sources.RightHand].stateUp)
+                if (SteamVR_Actions._default.TouchPadLasterButtonA[SteamVR_Input_Sources.RightHand].stateUp && laserOnCooldown)
                 {
+                    StartCoroutine(WaitForColor(lineRenderer));
                     string command = hit.collider.gameObject.name;
                     if (hit.collider.gameObject.name == "Stem" || hit.collider.gameObject.name == "Push")
                     {
