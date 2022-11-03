@@ -6,8 +6,8 @@ public class MoveObject : MonoBehaviour
 {
     public GameObject platform;
     public GameObject player;
-    private KeyCode z = KeyCode.Z;
-    private KeyCode x = KeyCode.X;
+    public static bool moveLeft = false;
+    public static bool moveRight = false;
 
     private void Start()
     {
@@ -24,14 +24,14 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(z))
+        if (moveLeft)
         {
-            move(platform, 0f, 0f, -0.05f);
+            move(platform, 0f, 0f, -0.01f);
         }
 
-        if (Input.GetKeyDown(x))
+        if (moveRight)
         {
-            move(platform, 0f, 0f, 0.05f);
+            move(platform, 0f, 0f, 0.01f);
         }
 
     }
@@ -40,15 +40,15 @@ public class MoveObject : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("triggeer");
-            if (Input.GetKeyDown(z))
+            //Debug.Log("triggeer");
+            while (moveLeft)
             {
-                move(player, 0f, 0f, -0.05f);
+                move(player, 0f, 0f, -0.01f);
             }
 
-            if (Input.GetKeyDown(x))
+            while(moveRight)
             {
-                move(player, 0f, 0f, 0.05f);
+                move(player, 0f, 0f, 0.01f);
             }
         }
     }

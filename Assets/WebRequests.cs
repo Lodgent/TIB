@@ -21,6 +21,7 @@ public class WebRequests : MonoBehaviour
 
     public GameObject EscapeButton;
 
+
     void Start()
     {
 
@@ -60,6 +61,24 @@ public class WebRequests : MonoBehaviour
                     EscapeButton.transform.position.y - 0.5f, EscapeButton.transform.position.z);
             }
             EscapeButton.SetActive(true);
+        }
+        else if (commands[0] == "MovePlatformLeftStart")
+        {
+            MoveObject.moveLeft = true;
+
+        }
+        else if (commands[0] == "MovePlatformRightStart")
+        {
+            MoveObject.moveRight = true;
+        }
+        else if (commands[0] == "MovePlatformLeftEnd")
+        {
+            MoveObject.moveLeft = false;
+
+        }
+        else if (commands[0] == "MovePlatformRightEnd")
+        {
+            MoveObject.moveRight = false;
         }
     }
 }
