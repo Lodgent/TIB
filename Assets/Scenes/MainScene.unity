@@ -1864,9 +1864,9 @@ MonoBehaviour:
   onButtonDown:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1892895044}
-        m_TargetAssemblyTypeName: OpenDoor, Assembly-CSharp
-        m_MethodName: OpenEscapeDoor
+      - m_Target: {fileID: 1892895041}
+        m_TargetAssemblyTypeName: GiveCommand, Assembly-CSharp
+        m_MethodName: PostRequest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1968,12 +1968,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892895033}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74e75297e6ff08d4b8c9ba8e89e84442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: pidge
+  action: ActivatePlatform
 --- !u!114 &1892895044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892895033}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b652e3bd3c66dba4cb41853a02594db2, type: 3}
   m_Name: 
