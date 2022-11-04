@@ -6,6 +6,9 @@ public class Kill : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject player;
+    public float x;
+    public float y;
+    public float z;
     void Start()
     {
         
@@ -20,7 +23,7 @@ public class Kill : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.transform.position = new Vector3(8f, 1f, 14f);
+            player.transform.position = new Vector3(x, y, z);
         }
     }
 }
