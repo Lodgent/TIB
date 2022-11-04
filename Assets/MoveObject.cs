@@ -8,10 +8,14 @@ public class MoveObject : MonoBehaviour
     public GameObject player;
     public static bool moveLeft = false;
     public static bool moveRight = false;
+    private bool IsPlayerOnPlatform;
+    public float leftLimit;
+    public float rightLimit;
+
 
     private void Start()
     {
-
+        IsPlayerOnPlatform = false;
     }
 
 
@@ -24,32 +28,40 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveLeft)
+        if (platform.transform.position.z > leftLimit)
         {
-            move(platform, 0f, 0f, -0.01f);
+            if (moveLeft)
+            {
+                move(platform, 0f, 0f, -0.01f);
+                if (IsPlayerOnPlatform)
+                    move(player, 0f, 0f, -0.01f);
+            }
         }
 
-        if (moveRight)
+        if (platform.transform.position.z < rightLimit)
         {
-            move(platform, 0f, 0f, 0.01f);
+            if (moveRight)
+            {
+                move(platform, 0f, 0f, 0.01f);
+                if (IsPlayerOnPlatform)
+                    move(player, 0f, 0f, 0.01f);
+            }
         }
-
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            //Debug.Log("triggeer");
-            while (moveLeft)
-            {
-                move(player, 0f, 0f, -0.01f);
-            }
-
-            while(moveRight)
-            {
-                move(player, 0f, 0f, 0.01f);
-            }
+            IsPlayerOnPlatform = true;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            IsPlayerOnPlatform = false;
+        }
+    }
+
 }
