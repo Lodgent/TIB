@@ -1,7 +1,6 @@
 body{
     margin: 0;
-    display: flex; 
-    padding: 50px;
+    display: flex;
 }
 
 ul{
@@ -15,15 +14,27 @@ ul{
 li{
     width: 100%;
     height: 25px;
-    background-color: green;
+    box-sizing: border-box;
     margin-bottom: 1px;
 }
 
 .game_field{
     width: 75%;
-    min-height: 200px;
+    min-height: 969px;
     background-color: black;
-    margin-right: 10px;
+    border: 5px solid green;
+    box-sizing: border-box;
+}
+
+.current_field{
+    text-align: center;
+    background-color: black;
+    color: cyan;
+    border: 5px solid green;
+}
+
+.current_field p{
+    font-size: 20px;
 }
 
 .inv_field{
@@ -36,6 +47,36 @@ li{
     display: flex;
 }
 
+.game{
+    height: 100%;
+}
+
+.game li{
+    height: var(--element-height);
+    border-radius: 20%;
+    border: 2px solid cyan;
+}
+
+.item_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item_list li{
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.item_list div{
+    width: 100%;
+    height: 100%;
+    background-image: url("Button.png");
+    background-size: 100%;
+}
+
 .active{
     background-color:brown;
 }
@@ -45,5 +86,5 @@ li{
 }
 
 .ceil li{
-    background-color: red;
+    background-color: black;
 }

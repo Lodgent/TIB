@@ -2,6 +2,7 @@ const requestURL = 'http://26.100.4.13:5000'
 let level = 1
 let levelH = 10
 let levelW = 16
+let windowH = 969
 
 let clickedInvItem = ''
 let activePosition = 'floor'
@@ -10,6 +11,7 @@ SetAllGameFields("ceil", 10)
 SetAllGameFields("floor", 0)
 
 let invul = document.createElement('ul')
+invul.className = "item_list"
 document.body.children[1].append(invul)
 
 function PlaySound(fileName){
@@ -26,6 +28,7 @@ function SetAllGameFields(position, shify){
         for (let j = 0; j < levelH; j++) {
             let li = document.createElement('li');
             li.onclick = function() { POSTRequest(j, shify, i) }
+            li.style.setProperty('--element-height', Math.floor(windowH / levelH) + 'px')
             ull.append(li)
         }
         firstUl.append(ull)
@@ -48,13 +51,13 @@ setInterval(function GETRequest() {
                 let invli = document.createElement('li')
                 invli.className = "not_active"
                 invli.onclick = function() { ChangeActive(invli) }
-                let invtext = document.createElement('p')
-                invtext.textContent = "im button"
+                let invtext = document.createElement('div')
                 invli.append(invtext)
                 invul.append(invli)
             }
             if(info == 'Ceil' || info == 'Floor'){
                 info = info.toLowerCase()
+                document.getElementById("field").innerText = info == 'floor' ? 'Пол' : 'Потолок'
                 let a = Array.prototype.slice.call(document.body.children[0].children)
                 a.forEach(element => {
                     if (element.classList.contains(info)) {
