@@ -18,13 +18,13 @@ public class HostPort
 public class WebRequests : MonoBehaviour
 {
     public AudioSource SpawnObject;
-
+    public AudioSource MovePlatform;
     public GameObject EscapeButton;
 
 
     void Start()
     {
-
+        MovePlatform.volume = 0.5f;
     }
 
     void Update()
@@ -65,20 +65,24 @@ public class WebRequests : MonoBehaviour
         else if (commands[0] == "MovePlatformLeftStart")
         {
             MoveObject.moveLeft = true;
+            MovePlatform.Play();
 
         }
         else if (commands[0] == "MovePlatformRightStart")
         {
             MoveObject.moveRight = true;
+            MovePlatform.Play();
         }
         else if (commands[0] == "MovePlatformLeftEnd")
         {
             MoveObject.moveLeft = false;
+            MovePlatform.Stop();
 
         }
         else if (commands[0] == "MovePlatformRightEnd")
         {
             MoveObject.moveRight = false;
+            MovePlatform.Stop();
         }
     }
 }
