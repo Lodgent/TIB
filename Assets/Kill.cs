@@ -9,6 +9,7 @@ public class Kill : MonoBehaviour
     public float x;
     public float y;
     public float z;
+    public AudioSource source;
     void Start()
     {
         
@@ -24,6 +25,7 @@ public class Kill : MonoBehaviour
         if (other.tag == "Player")
         {
             player.transform.position = new Vector3(x, y, z);
+            source.Play();
         }
     }
 }
