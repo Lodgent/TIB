@@ -77,6 +77,10 @@ li{
     background-size: 100%;
 }
 
+.platform{
+    background-color: brown;
+}
+
 .active{
     background-color:brown;
 }
