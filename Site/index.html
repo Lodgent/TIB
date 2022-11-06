@@ -13,8 +13,11 @@
         <p>Текущая поверхность: <span id="field"></span></p>
       </div>
       <div class="mover hidden">
-        <p onclick="MoveLeft('Left')">Влево</p>
-        <p onmousedown="MoveRight('Right')">Вправо</p>
+        <p>Двигать платформу</p>
+        <div class="flex-mover">
+          <div class="arrow_button left" onclick="MoveLeft('Left')"></div>
+          <div class="arrow_button right" onmousedown="MoveRight('Right')"></div>
+        </div>
       </div>
     </div>
     

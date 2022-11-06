@@ -92,3 +92,38 @@ li{
 .ceil li{
     background-color: black;
 }
+
+.mover{
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border: 5px solid black;
+}
+
+.mover p{
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.flex-mover{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.arrow_button{
+    width: 100px;
+    height: 100px;
+    background-image: url("arrowLeft.png");
+    background-size: 100%;
+}
+
+.left{
+    background-image: url("arrowLeft.png");
+}
+
+.right{
+    background-image: url("arrowRight.png");
+}
