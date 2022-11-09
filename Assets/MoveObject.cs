@@ -12,7 +12,6 @@ public class MoveObject : MonoBehaviour
     public float leftLimit;
     public float rightLimit;
 
-
     private void Start()
     {
         IsPlayerOnPlatform = false;
