@@ -38,9 +38,9 @@ public class OpenDoor : MonoBehaviour
         light.color = Color.green;
         yield return new WaitForSeconds(2);
         DoorOpenMechanic.Play();
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 60; i++)
         {
-            Door.transform.position = new Vector3(Door.transform.position.x, Door.transform.position.y + 0.038f, Door.transform.position.z);
+            Door.transform.position = new Vector3(Door.transform.position.x, Door.transform.position.y + 0.06f, Door.transform.position.z);
             yield return new WaitForSeconds(0.03f);
         }
         
