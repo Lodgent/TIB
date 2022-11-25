@@ -22,6 +22,8 @@ public class ChangeLevel : MonoBehaviour
         if (other.tag == "Player")
         {
             SceneManager.LoadScene(LevelName);
+            GiveCommand.StaticPostRequest("Level2");
         }
+        
     }
 }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -32,5 +33,11 @@ public class GiveCommand : MonoBehaviour
 
     }
 
+    static public void StaticPostRequest(string ac)
+    {
+        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + ac + "&device=SITE";
+        UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
+        request.SendWebRequest();
+    }
 
 }
