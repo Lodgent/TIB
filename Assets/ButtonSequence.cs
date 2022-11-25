@@ -7,6 +7,7 @@ public class ButtonSequence : MonoBehaviour
     // Start is called before the first frame update
     private string Solution;
     public char Number;
+    public Light light;
    
     void Start()
     {
@@ -22,6 +23,7 @@ public class ButtonSequence : MonoBehaviour
 
     public void Press()
     {
+        
         if (State.Trigger)
             return;
         if (Solution[State.Now] == Number)
@@ -29,7 +31,8 @@ public class ButtonSequence : MonoBehaviour
             State.Now++;
             if (State.Now > 5)
             {
-                Debug.Log("You found it!");
+                light.color = Color.green;
+                GiveCommand.StaticPostRequest("GiveLevel2Button");
                 State.Trigger = true;
             }
         }
