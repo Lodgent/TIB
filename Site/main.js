@@ -1,18 +1,12 @@
-import * as level1 from '/levels/level1.js';
+import * as level from '/modules/levelSettings.js';
 import { PlaySound } from "../modules/playSound.js";
 import { TakeEscapeButton, clickedInvItem } from './modules/takeEscapeButton.js';
 import { SetField } from './modules/setField.js';
 import { SetPlatform } from './modules/platform.js';
 
-const requestURL = 'http://25.20.176.216:5000'
+const requestURL = 'http://25.32.13.14:5000'
 let xhr = new XMLHttpRequest();
-
-let invul = document.createElement('ul')
-invul.className = "item_list"
-document.body.children[1].append(invul)
-
-level1.SetAllGameFields("ceil", 10)
-level1.SetAllGameFields("floor", 0)
+level.CreateLevel()
 
 setInterval(function GETRequest() {
     return new Promise((resolve, reject) => {
@@ -23,9 +17,12 @@ setInterval(function GETRequest() {
             let info = JSON.stringify(a).split(":")[1]
             info = info.slice(1, info.length - 2)
             console.log(info)
-            if(info == 'GiveEscapeButton'){ TakeEscapeButton(invul) }
-            if(info == 'Ceil' || info == 'Floor'){ SetField(info) }
+            if(info == 'GiveEscapeButton'){ TakeEscapeButton(document.querySelector(".item_list")) }
+            if(info == 'Water'){ ShowWater() }
+            if(info == 'Button'){ ShowButton() }
+            if(info.includes('Ceil') || info.includes('Floor')){ SetField(info) }
             if(info == 'ActivatePlatform'){ SetPlatform() }
+            if(info == 'CompleteLevel') { level.CompleteLevel() }
         }
         xhr.send()
     })}, 1000)
@@ -46,3 +43,17 @@ export function GiveMovePlatform(action, direction) {
         xhr.open('POST', requestURL + '/action?action=MovePlatform'+direction + action +'&device=VR')
         xhr.send()
     })}
+
+function ShowWater(){
+    let waters = document.querySelectorAll(".water")
+    waters.forEach(element => {
+        element.classList.add("watershow")
+    });
+}
+
+function ShowButton(){
+    let buttons = document.querySelectorAll(".button")
+    buttons.forEach(element => {
+        element.classList.add("buttonshow")
+    });
+}
