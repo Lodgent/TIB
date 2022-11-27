@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 
 public class HostPort
 {
-    public static string host = "26.100.4.13";
+    public static string host = "25.32.13.14";
     public static string port = "5000";
 }
 
@@ -43,9 +43,9 @@ public class WebRequests : MonoBehaviour
         if (commands[0] == "SpawnEscapeButton")
         {
             var coords = commands[1].Split(',');
-            var x = float.Parse(coords[0]);
+            var x = float.Parse(coords[0]) + 1;
             var y = float.Parse(coords[1]);
-            var z = float.Parse(coords[2]);
+            var z = float.Parse(coords[2]) + 1;
             EscapeButton.transform.position = new Vector3(x, y, z);
             SpawnObject.Play();
             if (y == 0f)

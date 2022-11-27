@@ -59,6 +59,11 @@ public class PlayerRay : MonoBehaviour
                         command = "GiveEscapeButton";
                         EscapeButton.SetActive(false);
                     }
+
+                    if (hit.collider.gameObject.name == "Water")
+                    {
+                        command = "Water";
+                    }
                     LaserSend.Play();
                     PostRequest(command);
                 }
