@@ -8,10 +8,11 @@ public class ButtonSequence : MonoBehaviour
     private string Solution;
     public char Number;
     public Light light;
+    public AudioSource source;
    
     void Start()
     {
-        Solution = "216354";
+        Solution = "256134";
        
     }
 
@@ -34,6 +35,8 @@ public class ButtonSequence : MonoBehaviour
                 light.color = Color.green;
                 GiveCommand.StaticPostRequest("GiveLevel2Button");
                 State.Trigger = true;
+                source.Play();
+
             }
         }
         else
