@@ -44,17 +44,19 @@ li{
 
 .game{
     margin: 0 auto;
-    display: flex;
+    height: 100%;
 }
 
-.game{
-    height: 100%;
+.game ul{
+    display: block;
 }
 
 .game li{
     height: var(--element-height);
+    width: var(--element-width);
     border-radius: 20%;
     border: 2px solid cyan;
+    float: left;
 }
 
 .item_list{
@@ -77,20 +79,12 @@ li{
     background-size: 100%;
 }
 
-.platform{
-    background-color: brown;
-}
-
 .active{
     background-color:brown;
 }
 
 .hidden{
     display: none;
-}
-
-.ceil li{
-    background-color: black;
 }
 
 .mover{
@@ -126,4 +120,16 @@ li{
 
 .right{
     background-image: url("arrowRight.png");
+}
+
+.watershow{
+    background-color: blue;
+}
+
+.platform{
+    background-color: brown;
+}
+
+.buttonshow{
+    background-color: yellow;
 }
