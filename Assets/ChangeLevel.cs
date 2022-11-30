@@ -6,6 +6,11 @@ public class ChangeLevel : MonoBehaviour
 {
     // Start is called before the first frame update
     public string LevelName;
+    public GameObject player;
+
+    public float x;
+    public float y;
+    public float z;
     void Start()
     {
         
@@ -23,6 +28,7 @@ public class ChangeLevel : MonoBehaviour
         {
             SceneManager.LoadScene(LevelName);
             GiveCommand.StaticPostRequest("CompleteLevel");
+            player.transform.position = new Vector3(x, y, z);
         }
         
     }
