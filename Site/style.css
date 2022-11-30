@@ -75,8 +75,36 @@ li{
 .item_list div{
     width: 100%;
     height: 100%;
-    background-image: url("Button.png");
     background-size: 100%;
+}
+
+.button{
+    background-image: url("images/Button.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.symbols{
+    background-image: url("images/Symbols1.png");
+    transition: 1s;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.green_button{
+    background-image: url("images/GreenButton.png");
+}
+
+.blue_button{
+    background-image: url("images/BlueButton.png");
+}
+
+.symbols_clicked{
+    background-image: url("images/Symbols.png");
+    transform: scale(0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .active{
@@ -110,16 +138,16 @@ li{
 .arrow_button{
     width: 100px;
     height: 100px;
-    background-image: url("arrowLeft.png");
+    background-image: url("images/arrowLeft.png");
     background-size: 100%;
 }
 
 .left{
-    background-image: url("arrowLeft.png");
+    background-image: url("images/arrowLeft.png");
 }
 
 .right{
-    background-image: url("arrowRight.png");
+    background-image: url("images/arrowRight.png");
 }
 
 .watershow{
@@ -131,5 +159,17 @@ li{
 }
 
 .buttonshow{
-    background-color: yellow;
+    background-color: gray;
+}
+
+.platform_button_show{
+    background-color: white;
+}
+
+.green_platform_button_show{
+    background-color: green;
+}
+
+.blue_platform_button_show{
+    background-color: blue;
 }

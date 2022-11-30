@@ -15,7 +15,12 @@ let number = 2
 
 export function CreateLevel(){
   for (let key in levels[number - 1]){
-    SetAllGameFields(key, levels[number - 1][key])
+    if (key.includes('floor')){
+      SetAllGameFields(key, levels[number - 1][key], 0)
+    }
+    else{
+      SetAllGameFields(key, levels[number - 1][key], 10)
+    }
   }
 }
 
@@ -33,7 +38,19 @@ function SetAllGameFields(field, map, shify){
             li.classList.add("water")
           }
           else if(map[i][j] == 'B'){
-            li.classList.add("button")
+            li.classList.add("black_button")
+          }
+          else if(map[i][j] == 'P'){
+            li.classList.add("platform_button")
+            li.onclick = function() { GiveEscapeButton(i, shify, j, "white_platform") }
+          }
+          else if(map[i][j] == 'G'){
+            li.classList.add("green_platform_button")
+            li.onclick = function() { GiveEscapeButton(i, shify, j, "green_platform") }
+          }
+          else if(map[i][j] == 'b'){
+            li.classList.add("blue_platform_button")
+            li.onclick = function() { GiveEscapeButton(i, shify, j, "blue_platform") }
           }
           li.style.setProperty('--element-height', Math.floor(windowH / map.length) + 'px')
           li.style.setProperty('--element-width', Math.floor(windowW / map[i].length) + 'px')
