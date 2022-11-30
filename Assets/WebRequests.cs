@@ -20,11 +20,37 @@ public class WebRequests : MonoBehaviour
     public AudioSource SpawnObject;
     public AudioSource MovePlatform;
     public GameObject EscapeButton;
+    public GameObject BlueButton;
+    public GameObject GreenButton;
 
 
     void Start()
     {
         MovePlatform.volume = 0.5f;
+    }
+
+    void spawn_object(GameObject obj, string[] commands, float deltaX, float deltaY, float deltaZ)
+    {
+        var coords = commands[1].Split(',');
+        var x = float.Parse(coords[0]) + 1;
+        var y = float.Parse(coords[1]);
+        var z = float.Parse(coords[2]) + 1;
+        obj.transform.position = new Vector3(x, y, z);
+        SpawnObject.Play();
+        if (y == 0f)
+        {
+            obj.transform.rotation = Quaternion.Euler(0, 0, 0);
+            obj.transform.position = new Vector3(obj.transform.position.x + deltaX,
+                obj.transform.position.y + 0.5f + deltaY, obj.transform.position.z + deltaZ);
+        }
+        else if (y == 10f)
+        {
+            obj.transform.rotation = Quaternion.Euler(180, 0, 0);
+            obj.transform.position = new Vector3(obj.transform.position.x + deltaX,
+                obj.transform.position.y - 0.5f - deltaY, obj.transform.position.z + deltaZ);
+        }
+        obj.SetActive(true);
+
     }
 
     void Update()
@@ -40,27 +66,9 @@ public class WebRequests : MonoBehaviour
         }
         var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
         var commands = values["action"].Split(':');
-        if (commands[0] == "SpawnEscapeButton")
+        if (commands[0] == "button")
         {
-            var coords = commands[1].Split(',');
-            var x = float.Parse(coords[0]) + 1;
-            var y = float.Parse(coords[1]);
-            var z = float.Parse(coords[2]) + 1;
-            EscapeButton.transform.position = new Vector3(x, y, z);
-            SpawnObject.Play();
-            if (y == 0f)
-            {
-                EscapeButton.transform.rotation = Quaternion.Euler(0, 0, 0);
-                EscapeButton.transform.position = new Vector3(EscapeButton.transform.position.x,
-                    EscapeButton.transform.position.y + 0.5f, EscapeButton.transform.position.z);
-            }
-            else if (y == 10f)
-            {
-                EscapeButton.transform.rotation = Quaternion.Euler(180, 0, 0);
-                EscapeButton.transform.position = new Vector3(EscapeButton.transform.position.x,
-                    EscapeButton.transform.position.y - 0.5f, EscapeButton.transform.position.z);
-            }
-            EscapeButton.SetActive(true);
+            spawn_object(EscapeButton, commands, 0f, 0f, 0f);
         }
         else if (commands[0] == "MovePlatformLeftStart")
         {
@@ -83,6 +91,16 @@ public class WebRequests : MonoBehaviour
         {
             MoveObject.moveRight = false;
             MovePlatform.Stop();
+        }
+        else if (commands[0] == "blue_button")
+        {
+            spawn_object(BlueButton, commands, 0f, 0.25f, 20f);
+        }
+        else if (commands[0] == "green_button")
+        {
+            Debug.Log("xd");
+            spawn_object(GreenButton, commands, 0f, 0.25f, 20f);
+           
         }
     }
 }

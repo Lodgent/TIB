@@ -11,6 +11,8 @@ public class PlayerRay : MonoBehaviour
     public GameObject EscapeButton;
     public AudioSource LaserOn;
     public AudioSource LaserSend;
+    public GameObject GreenButton;
+    public GameObject BlueButton;
     private bool laserOnCooldown;
     void Start()
     {
@@ -64,6 +66,34 @@ public class PlayerRay : MonoBehaviour
                     {
                         command = "Water";
                     }
+
+                    if (hit.collider.gameObject.name == "GreenButtonStem" ||
+                        hit.collider.gameObject.name == "GreenButtonPush")
+                    {
+                        if (BlueButton.activeSelf)
+                        {
+                            command = "GiveGreenButton";
+                            GreenButton.SetActive(false);
+                        }
+
+                    }
+                    if (hit.collider.gameObject.name == "BlueButtonStem" ||
+                        hit.collider.gameObject.name == "BlueButtonPush")
+                    {
+                        if (GreenButton.activeSelf)
+                        {
+                            command = "GiveBlueButton";
+                            BlueButton.SetActive(false);
+                        }
+
+                    }
+
+                    if (hit.collider.gameObject.name == "Stem2" || hit.collider.gameObject.name == "Push2")
+                    {
+                        command = "SequenceButton";
+                    }
+
+
                     LaserSend.Play();
                     PostRequest(command);
                 }

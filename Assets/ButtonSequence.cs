@@ -9,6 +9,7 @@ public class ButtonSequence : MonoBehaviour
     public char Number;
     public Light light;
     public AudioSource source;
+    public AudioSource bad;
    
     void Start()
     {
@@ -33,7 +34,7 @@ public class ButtonSequence : MonoBehaviour
             if (State.Now > 5)
             {
                 light.color = Color.green;
-                GiveCommand.StaticPostRequest("GiveLevel2Button");
+                GiveCommand.StaticPostRequest("GiveEscapeButton");
                 State.Trigger = true;
                 source.Play();
 
@@ -41,6 +42,7 @@ public class ButtonSequence : MonoBehaviour
         }
         else
         {
+            bad.Play();
             State.Now = 0;
         }
     }

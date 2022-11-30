@@ -12,9 +12,13 @@ public class SpeedBrain : MonoBehaviour
     private bool start;
     public Light light;
     public AudioSource source;
+    public AudioSource winMusic;
+    public AudioSource timer;
+    private int cd;
     void Start()
     {
         start = false;
+        cd = 10;
     }
 
     // Update is called once per frame
@@ -25,26 +29,31 @@ public class SpeedBrain : MonoBehaviour
         {
             pressedTime = DateTime.Now;
             start = true;
+            timer.Play();
         }
         
         if (State.SpeedBrain == 2)
         {
-            if (int.Parse((pressedTime - DateTime.Now).ToString("ss")) < 5)
+            if (int.Parse((pressedTime - DateTime.Now).ToString("ss")) < cd)
             {
+                timer.Stop();
                 source.Play();
                 light.color = Color.green;
                 State.SpeedBrain = 0;
                 start = false;
+                GiveCommand.StaticPostRequest("GiveLaser");
+                
             }
         }
 
         if (start)
         {
-            if (int.Parse((pressedTime - DateTime.Now).ToString("ss")) > 5)
+            if (int.Parse((pressedTime - DateTime.Now).ToString("ss")) > cd)
             {
                 State.SpeedBrain = 0;
                 State.LastSpeedBrain = "";
-                Debug.Log("WRONG!");
+                timer.Stop();
+                winMusic.Play();
                 start = false;
             }
         }
