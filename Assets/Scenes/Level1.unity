@@ -331,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175468818}
   - component: {fileID: 175468817}
+  - component: {fileID: 175468819}
   m_Layer: 0
   m_Name: WatReflectionSceneCamera
   m_TagString: Untagged
@@ -388,14 +389,23 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175468816}
-  m_LocalRotation: {x: 0.035633698, y: 0.85549897, z: 0.05938319, w: -0.5131525}
-  m_LocalPosition: {x: 23.936401, y: -8.077367, z: 22.046112}
+  m_LocalRotation: {x: 0.045174696, y: 0.79558545, z: 0.05942776, w: -0.60122496}
+  m_LocalPosition: {x: 20.201551, y: -8.91507, z: 12.807625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &175468819
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175468816}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &195337177 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8875449794350654444, guid: b581fdbd127292d44ab21c4b16d91d05,
@@ -736,10 +746,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4.46
+  m_Intensity: 3
   m_Range: 30.9
-  m_SpotAngle: 87
-  m_InnerSpotAngle: 31
+  m_SpotAngle: 179
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -2495,7 +2505,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 4
+  m_Intensity: 15
   m_Range: 20
   m_SpotAngle: 77.2
   m_InnerSpotAngle: 59.691868
@@ -2867,15 +2877,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827076138}
-  m_LocalRotation: {x: 0.6419634, y: -0.0006898078, z: -0.009062011, w: 0.7666814}
-  m_LocalPosition: {x: 5, y: 10, z: 15.79}
+  m_LocalRotation: {x: 0.9004816, y: 0.003098367, z: -0.008543791, w: 0.4347991}
+  m_LocalPosition: {x: 5, y: 9.95, z: 15.88}
   m_LocalScale: {x: 2.1844, y: 2.1844, z: 2.1844}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 488028128}
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 100.149994, y: -184.13, z: -184.811}
+  m_LocalEulerAnglesHint: {x: 51.546, y: -178.831, z: -179.83}
 --- !u!1001 &1847854300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4482,10 +4492,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 4
+  m_Intensity: 15
   m_Range: 20
-  m_SpotAngle: 77.2
-  m_InnerSpotAngle: 59.691868
+  m_SpotAngle: 63.2
+  m_InnerSpotAngle: 51.8
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
