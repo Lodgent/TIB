@@ -46,7 +46,7 @@ public class SpeedBrain : MonoBehaviour
                 mymat.color = Color.green;
                 mymat.SetColor("_EmissionColor", Color.green);
                 platformLight.color = Color.green;
-                GiveCommand.StaticPostRequest("ActivateVPlatform");
+                GiveCommand.StaticPostRequest("ActivatePlatform");
                 
             }
         }

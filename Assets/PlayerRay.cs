@@ -14,6 +14,7 @@ public class PlayerRay : MonoBehaviour
     public GameObject GreenButton;
     public GameObject BlueButton;
     private bool laserOnCooldown;
+    public GameObject CeilButton;
     void Start()
     {
         LaserOn.volume = 0.5f;
@@ -91,6 +92,12 @@ public class PlayerRay : MonoBehaviour
                     if (hit.collider.gameObject.name == "Stem2" || hit.collider.gameObject.name == "Push2")
                     {
                         command = "SequenceButton";
+                    }
+
+                    if (hit.collider.gameObject.name == "StemCeil" || hit.collider.gameObject.name == "PushCeil")
+                    {
+                        command = "GiveCeilButton";
+                        CeilButton.SetActive(false);
                     }
 
 

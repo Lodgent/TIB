@@ -22,6 +22,7 @@ public class WebRequests : MonoBehaviour
     public GameObject EscapeButton;
     public GameObject BlueButton;
     public GameObject GreenButton;
+    public GameObject CeilButton;
 
 
     void Start()
@@ -92,14 +93,46 @@ public class WebRequests : MonoBehaviour
             MoveObject.moveRight = false;
             MovePlatform.Stop();
         }
+        else if (commands[0] == "MovePlatformUpStart")
+        {
+            MoveObject.moveUp = true;
+            MovePlatform.Play();
+        }
+        else if (commands[0] == "MovePlatformUpEnd")
+        {
+            MoveObject.moveUp = false;
+            MovePlatform.Stop();
+        }
+        else if (commands[0] == "MovePlatformDownStart")
+        {
+            MoveObject.moveDown = true;
+            MovePlatform.Play();
+        }
+        else if (commands[0] == "MovePlatformDownEnd")
+        {
+            MoveObject.moveDown = false;
+            MovePlatform.Stop();
+        }
         else if (commands[0] == "blue_button")
         {
-            spawn_object(BlueButton, commands, 0f, 0.25f, 20f);
+            spawn_object(BlueButton, commands, 0f, 0.25f, 40f);
         }
         else if (commands[0] == "green_button")
         {
-            spawn_object(GreenButton, commands, 0f, 0.25f, 20f);
+            spawn_object(GreenButton, commands, 0f, 0.25f, 40f);
            
+        }
+        else if (commands[0] == "ceil_button1")
+        {
+            spawn_object(CeilButton, commands, 0f, 0f, 0f);
+        }
+        else if (commands[0] == "ceil_button2")
+        {
+            spawn_object(CeilButton, commands, 0f, 0f, 40f);
+        }
+        else if (commands[0] == "ceil_button3")
+        {
+            spawn_object(CeilButton, commands, 0f, -9.7f, 22f);
         }
     }
 }

@@ -34,7 +34,7 @@ public class ButtonSequence : MonoBehaviour
             if (State.Now > 5)
             {
                 light.color = Color.green;
-                GiveCommand.StaticPostRequest("GiveEscapeButton");
+                GiveCommand.StaticPostRequest("GiveCeilButton");
                 State.Trigger = true;
                 source.Play();
 

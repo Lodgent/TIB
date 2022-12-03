@@ -5,16 +5,21 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
     public GameObject platform;
-    public GameObject player;
+    private GameObject player;
     public static bool moveLeft = false;
     public static bool moveRight = false;
+    public static bool moveUp = false;
+    public static bool moveDown = false;
     private bool IsPlayerOnPlatform;
     public float leftLimit;
     public float rightLimit;
+    public float upLimit;
+    public float downLimit;
 
     private void Start()
     {
         IsPlayerOnPlatform = false;
+        player = GameObject.FindWithTag("Player");  
     }
 
 
@@ -31,9 +36,10 @@ public class MoveObject : MonoBehaviour
         {
             if (moveLeft)
             {
-                move(platform, 0f, 0f, -0.01f);
                 if (IsPlayerOnPlatform)
                     move(player, 0f, 0f, -0.01f);
+                move(platform, 0f, 0f, -0.01f);
+                
             }
         }
 
@@ -41,9 +47,31 @@ public class MoveObject : MonoBehaviour
         {
             if (moveRight)
             {
-                move(platform, 0f, 0f, 0.01f);
                 if (IsPlayerOnPlatform)
                     move(player, 0f, 0f, 0.01f);
+                move(platform, 0f, 0f, 0.01f);
+                
+            }
+        }
+        if (platform.transform.position.y < upLimit)
+        {
+            if (moveUp)
+            {
+                if (IsPlayerOnPlatform)
+                    move(player, 0f, 0.01f, 0f);
+                move(platform, 0f, 0.01f, 0f);
+                
+            }
+        }
+        if (platform.transform.position.y > downLimit)
+        {
+            if (moveDown)
+            {
+                move(platform, 0f, -0.01f, 0f);
+                if (IsPlayerOnPlatform)
+                    move(player, 0f, -0.01f, 0f);
+                
+                
             }
         }
     }
