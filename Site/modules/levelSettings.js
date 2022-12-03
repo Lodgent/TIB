@@ -3,23 +3,26 @@ import * as level1 from '/levels/level1.js';
 import * as level2 from '/levels/level2.js';
 let windowH = 969
 let windowW = 1416
-
-let levels = [{
+let levels = [level1, level2]
+let levelsData = [{
     'floor': level1.floor, 
     'ceil' : level1.ceil}, {
         'floor1': level2.floor1, 
         'ceil1' : level2.ceil1,
         'floor2': level2.floor2, 
-        'ceil2' : level2.ceil2}]
-let number = 2
+        'ceil2' : level2.ceil2,
+        'floor3': level2.floor3,
+        'ceil3': level2.ceil3}]
+let number = 1
+export let activeLevel = levels[number - 1]
 
 export function CreateLevel(){
-  for (let key in levels[number - 1]){
+  for (let key in levelsData[number - 1]){
     if (key.includes('floor')){
-      SetAllGameFields(key, levels[number - 1][key], 0)
+      SetAllGameFields(key, levelsData[number - 1][key], 0)
     }
     else{
-      SetAllGameFields(key, levels[number - 1][key], 10)
+      SetAllGameFields(key, levelsData[number - 1][key], 10)
     }
   }
 }
@@ -65,6 +68,10 @@ export function CompleteLevel(){
   let fields = document.querySelectorAll(".game")
   let mover = document.querySelector(".mover")
   let inventoryItems = document.querySelectorAll(".item_list li")
+  let horizontalArrows = document.querySelector('.horizontal')
+  let verticalArrows = document.querySelector('.vertical')
+  horizontalArrows.classList.add("hidden")
+  verticalArrows.classList.add("hidden")
   mover.classList.add("hidden")
   fields.forEach(element => {
       element.remove()
@@ -73,5 +80,6 @@ export function CompleteLevel(){
       element.remove()
   });
   number += 1
+  activeLevel = levels[number - 1]
   CreateLevel()
 }
