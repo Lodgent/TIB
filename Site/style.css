@@ -99,6 +99,11 @@ li{
     background-image: url("images/BlueButton.png");
 }
 
+.ceil_button{
+    background-image: url("images/Button.png");
+    transform: rotate(180deg);
+}
+
 .symbols_clicked{
     background-image: url("images/Symbols.png");
     transform: scale(0.5);
@@ -109,6 +114,13 @@ li{
 
 .active{
     background-color:brown;
+}
+
+.horizontal{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0 auto;
 }
 
 .hidden{
@@ -128,18 +140,24 @@ li{
     font-size: 20px;
 }
 
-.flex-mover{
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
-    margin: 0 auto;
-}
-
 .arrow_button{
     width: 100px;
     height: 100px;
     background-image: url("images/arrowLeft.png");
     background-size: 100%;
+}
+
+.up{
+    background-image: url("images/arrowLeft.png");
+    transform: rotate(90deg);
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.down{
+    background-image: url("images/arrowLeft.png");
+    transform: rotate(-90deg);
+    margin: 0 auto;
 }
 
 .left{

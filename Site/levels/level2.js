@@ -1,3 +1,8 @@
+export let platformDir = "vertical"
+export let platformPosition = 'floor3'
+export let platformStart = 12
+export let platformDelta = 36
+
 export let floor1 = [
     "EEEEEEEEEEEEEEEEEEE",
     "EBEEBEEBEEBEEBEEBEE",
@@ -41,6 +46,29 @@ export let ceil2 = [
     "EEEEEEEEEEEEEEEEEbE",
     "EEEEEEEEEEEEEEEEEEE",
     "EEEEEEEEEEEEEEEEEEE"]
+
+export let floor3 = [
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEWW",
+    "EEEEEEEEEEEEWW"]
+
+export let ceil3 = [
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEE"]
+
 
         
 

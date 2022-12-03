@@ -1,13 +1,12 @@
 import * as level from '/modules/levelSettings.js';
 import { PlaySound } from "../modules/playSound.js";
 import { TakeInventory, clickedInvItem } from './modules/inventory.js';
-import { SetField } from './modules/setField.js';
+import { SetField, field } from './modules/setField.js';
 import { SetPlatform } from './modules/platform.js';
 
 const requestURL = 'http://25.32.13.14:5000'
 let xhr = new XMLHttpRequest();
 level.CreateLevel()
-TakeInventory(document.querySelector(".item_list"), "laser")
 
 setInterval(function GETRequest() {
     return new Promise((resolve, reject) => {
@@ -21,16 +20,16 @@ setInterval(function GETRequest() {
             if(info == 'GiveEscapeButton'){ TakeInventory(document.querySelector(".item_list"), "button") }
             if(info == 'GiveGreenButton'){ TakeInventory(document.querySelector(".item_list"), "green_button") }
             if(info == 'GiveBlueButton'){ TakeInventory(document.querySelector(".item_list"), "blue_button") }
+            if(info == 'GiveCeilButton'){ TakeInventory(document.querySelector(".item_list"), "ceil_button") }
             if(info == 'Water'){ ShowWater() }
             if(info == 'SequenceButton'){ ShowButton() }
             if(info == 'Block') { ShowPlatform() }
             if(info == 'GreenBlock') { GreenShowPlatform() }
             if(info == 'BlueBlock') { BlueShowPlatform() }
-            if(info.includes('Ceil') || info.includes('Floor')){ SetField(info) }
+            if((info.includes('Ceil') || info.includes('Floor')) && !info.includes('Button')){ SetField(info) }
             if(info == 'ActivatePlatform'){ SetPlatform() }
             if(info == 'CompleteLevel') { level.CompleteLevel() }
             if(info == 'Symbols') { TakeInventory(document.querySelector(".item_list"), "symbols") }
-            if(info == 'GiveLaser') { TakeInventory(document.querySelector(".item_list"), "laser") }
         }
         xhr.send()
     })}, 1000)
@@ -38,9 +37,7 @@ setInterval(function GETRequest() {
 export function GiveEscapeButton(x, y, z, platform='basic') {
     return new Promise((resolve, reject) => {
         if (clickedInvItem.className != undefined) {
-            console.log(platform)
-            console.log(clickedInvItem.querySelector("div").className)
-            if(platform == 'basic' && clickedInvItem.querySelector("div").className != "button"){
+            if(platform == 'basic' && clickedInvItem.querySelector("div").className != "button" && clickedInvItem.querySelector('div').className != 'ceil_button'){
                 return
             }
             if(platform == "white_platform" && (clickedInvItem.querySelector("div").className != "green_button" && clickedInvItem.querySelector("div").className != "blue_button")){
@@ -52,12 +49,21 @@ export function GiveEscapeButton(x, y, z, platform='basic') {
             if(platform == "blue_platform" && clickedInvItem.querySelector("div").className != "blue_button"){
                 return
             }
+            if(platform == 'basic' && clickedInvItem.querySelector("div").className == "ceil_button" && !field.includes('ceil')){
+                return
+            }
             clickedInvItem.className = ''
             console.log(clickedInvItem.querySelector("div"))
             clickedInvItem.remove()
             PlaySound('../sounds/laser_send.mp3')
-            xhr.open('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+':'+x+','+y+','+z+'&device=VR');
-            console.log('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+':'+x+','+y+','+z+'&device=VR')
+            if(clickedInvItem.querySelector("div").className == "ceil_button"){
+                xhr.open('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+''+field[field.length - 1]+':'+x+','+y+','+z+'&device=VR'); 
+                console.log('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+''+field[field.length - 1]+':'+x+','+y+','+z+'&device=VR')
+            }
+            else{
+                xhr.open('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+':'+x+','+y+','+z+'&device=VR');
+                console.log('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+':'+x+','+y+','+z+'&device=VR')
+            }
             xhr.send()
         }
     })}
