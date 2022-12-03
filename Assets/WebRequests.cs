@@ -98,7 +98,6 @@ public class WebRequests : MonoBehaviour
         }
         else if (commands[0] == "green_button")
         {
-            Debug.Log("xd");
             spawn_object(GreenButton, commands, 0f, 0.25f, 20f);
            
         }

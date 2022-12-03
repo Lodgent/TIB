@@ -15,6 +15,8 @@ public class SpeedBrain : MonoBehaviour
     public AudioSource winMusic;
     public AudioSource timer;
     private int cd;
+    public GameObject platformCircle;
+    public Light platformLight;
     void Start()
     {
         start = false;
@@ -41,7 +43,11 @@ public class SpeedBrain : MonoBehaviour
                 light.color = Color.green;
                 State.SpeedBrain = 0;
                 start = false;
-                GiveCommand.StaticPostRequest("GiveLaser");
+                Material mymat = platformCircle.GetComponent<Renderer>().material;
+                mymat.color = Color.green;
+                mymat.SetColor("_EmissionColor", Color.green);
+                platformLight.color = Color.green;
+                GiveCommand.StaticPostRequest("ActivateVPlatform");
                 
             }
         }
