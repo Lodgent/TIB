@@ -1,5 +1,6 @@
-export let platformStart = 8
+export let platformStart = 10
 export let platformDelta = 5
+export let timeMovePlatform = 1600
 export let platformDir = "horizontal"
 export let platformPosition = 'floor'
 

@@ -67,6 +67,6 @@ function Move(dir) {
             working = false
             GiveMovePlatform('End', dir)
         }
-    }, 1100)
+    }, activeLevel.timeMovePlatform)
     GiveMovePlatform('Start', dir)
 }
