@@ -1,25 +1,26 @@
 export let platformStart = 8
-export let platformDelta = 3
+export let platformDelta = 5
 export let platformDir = "horizontal"
 export let platformPosition = 'floor'
 
 export let floor = [
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE",
-            "EEEEEDDDDDEEEEE"]
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE",
+            "EEEEEDDDDDDDEEEEE"]
 
-export let ceil = ["EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEE"]
+export let ceil = [
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEEEE"]
