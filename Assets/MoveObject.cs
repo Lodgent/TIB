@@ -36,9 +36,10 @@ public class MoveObject : MonoBehaviour
         {
             if (moveLeft)
             {
+                move(platform, 0f, 0f, -0.01f);
                 if (IsPlayerOnPlatform)
                     move(player, 0f, 0f, -0.01f);
-                move(platform, 0f, 0f, -0.01f);
+                
                 
             }
         }
@@ -47,9 +48,10 @@ public class MoveObject : MonoBehaviour
         {
             if (moveRight)
             {
+                move(platform, 0f, 0f, 0.01f);
                 if (IsPlayerOnPlatform)
                     move(player, 0f, 0f, 0.01f);
-                move(platform, 0f, 0f, 0.01f);
+                
                 
             }
         }

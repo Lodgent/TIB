@@ -373,8 +373,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175468816}
-  m_LocalRotation: {x: 0.30021515, y: -0.5350341, z: -0.21032964, w: -0.7611642}
-  m_LocalPosition: {x: 3.828682, y: -7.242402, z: 12.703478}
+  m_LocalRotation: {x: 0.035542563, y: -0.93779725, z: -0.3309335, w: -0.09877275}
+  m_LocalPosition: {x: 5.785677, y: -10.470017, z: 17.287598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1593,6 +1593,7 @@ MonoBehaviour:
   GreenButton: {fileID: 0}
   BlueButton: {fileID: 0}
   CeilButton: {fileID: 0}
+  lastray: 
 --- !u!120 &748672708
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2878,6 +2879,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875449794350654436, guid: b581fdbd127292d44ab21c4b16d91d05,
+        type: 3}
+      propertyPath: m_Name
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 8875449794350654438, guid: b581fdbd127292d44ab21c4b16d91d05,
         type: 3}
@@ -5087,6 +5093,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: -8075332674431736747, guid: ace85597966e8a04ca896ac9bb2dacac,
+        type: 3}
+      propertyPath: m_Name
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: -7981988344837108390, guid: ace85597966e8a04ca896ac9bb2dacac,
         type: 3}
       propertyPath: m_RootOrder
@@ -5126,6 +5137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: -6950001193197360011, guid: ace85597966e8a04ca896ac9bb2dacac,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceil
       objectReference: {fileID: 0}
     - target: {fileID: -6856561859082661119, guid: ace85597966e8a04ca896ac9bb2dacac,
         type: 3}
@@ -5282,6 +5298,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: -3375587685038656327, guid: ace85597966e8a04ca896ac9bb2dacac,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05d1f390170a86141a3b59c3c3499137, type: 2}
     - target: {fileID: -3201284255301636731, guid: ace85597966e8a04ca896ac9bb2dacac,
         type: 3}
       propertyPath: m_RootOrder
@@ -5327,6 +5348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: -2077101593993328997, guid: ace85597966e8a04ca896ac9bb2dacac,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe79d70676eab084c8046e4375d82cb4, type: 2}
     - target: {fileID: -1885213496278760313, guid: ace85597966e8a04ca896ac9bb2dacac,
         type: 3}
       propertyPath: m_RootOrder
@@ -5427,6 +5453,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 427162076613568158, guid: ace85597966e8a04ca896ac9bb2dacac,
+        type: 3}
+      propertyPath: m_Name
+      value: Ceil
+      objectReference: {fileID: 0}
+    - target: {fileID: 674640270996475039, guid: ace85597966e8a04ca896ac9bb2dacac,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c37bda71d2c43e24cbd86891aabb12a1, type: 2}
     - target: {fileID: 812210731537279025, guid: ace85597966e8a04ca896ac9bb2dacac,
         type: 3}
       propertyPath: m_RootOrder
@@ -6117,7 +6153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.514
+      value: 14.38
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6718,8 +6754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 2020215496}
-  leftLimit: 8
-  rightLimit: 12
+  leftLimit: 7
+  rightLimit: 11
   upLimit: 0
   downLimit: 0
 --- !u!65 &2020215498
