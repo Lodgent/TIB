@@ -53,6 +53,9 @@ public class PlayerRay : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 lineRenderer.SetPosition(1, hit.point);
+                //try for vibration
+                //SteamVR_Actions.default_Haptic[SteamVR_Input_Sources.RightHand].Execute(0, 1, 5, 1);
+
                 if (SteamVR_Actions._default.TouchPadLasterButtonA[SteamVR_Input_Sources.RightHand].stateUp && laserOnCooldown)
                 {
                     StartCoroutine(WaitForColor(lineRenderer));
