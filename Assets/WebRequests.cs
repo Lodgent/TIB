@@ -33,9 +33,9 @@ public class WebRequests : MonoBehaviour
     void spawn_object(GameObject obj, string[] commands, float deltaX, float deltaY, float deltaZ)
     {
         var coords = commands[1].Split(',');
-        var x = float.Parse(coords[0]) + 1;
+        var x = float.Parse(coords[0]);
         var y = float.Parse(coords[1]);
-        var z = float.Parse(coords[2]) + 1;
+        var z = float.Parse(coords[2]);
         obj.transform.position = new Vector3(x, y, z);
         SpawnObject.Play();
         if (y == 0f)
@@ -67,9 +67,10 @@ public class WebRequests : MonoBehaviour
         }
         var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
         var commands = values["action"].Split(':');
+
         if (commands[0] == "button")
         {
-            spawn_object(EscapeButton, commands, 0f, 0f, 0f);
+            spawn_object(EscapeButton, commands, 1f, 0f, 1f);
         }
         else if (commands[0] == "MovePlatformLeftStart")
         {
@@ -115,11 +116,11 @@ public class WebRequests : MonoBehaviour
         }
         else if (commands[0] == "blue_button")
         {
-            spawn_object(BlueButton, commands, 0f, 0.25f, 40f);
+            spawn_object(BlueButton, commands, 0f, 0.25f, 42f);
         }
         else if (commands[0] == "green_button")
         {
-            spawn_object(GreenButton, commands, 0f, 0.25f, 40f);
+            spawn_object(GreenButton, commands, 0f, 0.25f, 42f);
            
         }
         else if (commands[0] == "ceil_button1")
@@ -128,7 +129,7 @@ public class WebRequests : MonoBehaviour
         }
         else if (commands[0] == "ceil_button2")
         {
-            spawn_object(CeilButton, commands, 0f, 0f, 40f);
+            spawn_object(CeilButton, commands, 0f, 0f, 42f);
         }
         else if (commands[0] == "ceil_button3")
         {
