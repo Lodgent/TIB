@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 
 public class HostPort
 {
-    public static string host = "25.32.13.14";
+    public static string host = "26.100.4.13";
     public static string port = "5000";
 }
 
@@ -133,7 +133,7 @@ public class WebRequests : MonoBehaviour
         }
         else if (commands[0] == "ceil_button3")
         {
-            spawn_object(CeilButton, commands, 0f, -9.7f, 22f);
+            spawn_object(CeilButton, commands, -2f, -16f, 24f);
         }
     }
 }
