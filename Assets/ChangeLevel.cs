@@ -30,6 +30,5 @@ public class ChangeLevel : MonoBehaviour
             GiveCommand.StaticPostRequest("CompleteLevel");
             player.transform.position = new Vector3(x, y, z);
         }
-        
     }
 }

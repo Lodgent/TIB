@@ -11,10 +11,10 @@ public class PlayerRay : MonoBehaviour
     public GameObject EscapeButton;
     public AudioSource LaserOn;
     public AudioSource LaserSend;
-    public GameObject GreenButton;
-    public GameObject BlueButton;
+    private GameObject GreenButton;
+    private GameObject BlueButton;
     private bool laserOnCooldown;
-    public GameObject CeilButton;
+    private GameObject CeilButton;
     public string lastray;
     void Start()
     {
@@ -81,20 +81,24 @@ public class PlayerRay : MonoBehaviour
                     if (hit.collider.gameObject.name == "GreenButtonStem" ||
                         hit.collider.gameObject.name == "GreenButtonPush")
                     {
-                        if (BlueButton.activeSelf)
+                        GreenButton = GameObject.Find("GreenButton");
+                        BlueButton = GameObject.Find("BlueButton");
+                        if (BlueButton.transform.position.y < 700f)
                         {
                             command = "GiveGreenButton";
-                            GreenButton.SetActive(false);
+                            GreenButton.transform.position = new Vector3(0f, 1000f, 0f);
                         }
 
                     }
                     if (hit.collider.gameObject.name == "BlueButtonStem" ||
                         hit.collider.gameObject.name == "BlueButtonPush")
                     {
-                        if (GreenButton.activeSelf)
+                        GreenButton = GameObject.Find("GreenButton");
+                        BlueButton = GameObject.Find("BlueButton");
+                        if (GreenButton.transform.position.y < 700f)
                         {
                             command = "GiveBlueButton";
-                            BlueButton.SetActive(false);
+                            BlueButton.transform.position = new Vector3(0f, 1000f, 0f);
                         }
 
                     }
@@ -106,8 +110,9 @@ public class PlayerRay : MonoBehaviour
 
                     if (hit.collider.gameObject.name == "StemCeil" || hit.collider.gameObject.name == "PushCeil")
                     {
+                        CeilButton = GameObject.Find("CeilButton");
                         command = "GiveCeilButton";
-                        CeilButton.SetActive(false);
+                        CeilButton.transform.position = new Vector3(0f, 1000f, 0f);
                     }
 
 

@@ -136,4 +136,10 @@ public class WebRequests : MonoBehaviour
             spawn_object(CeilButton, commands, -2f, -16f, 24f);
         }
     }
+
+    public GameObject GreenGet()
+    {
+        return GreenButton;
+    }
+
 }
