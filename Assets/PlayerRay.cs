@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using Valve.VR;
 
 public class PlayerRay : MonoBehaviour
@@ -16,6 +18,8 @@ public class PlayerRay : MonoBehaviour
     private bool laserOnCooldown;
     private GameObject CeilButton;
     public string lastray;
+    public GameObject StartButton;
+    public GameObject ExitCanvas;
     void Start()
     {
         LaserOn.volume = 0.5f;
@@ -30,6 +34,14 @@ public class PlayerRay : MonoBehaviour
         request.SendWebRequest();
 
     }
+
+    public void CreateSession(string code)
+    {
+        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/create_session?code=" + code;
+        UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
+        request.SendWebRequest();
+    }
+
     IEnumerator WaitForColor(LineRenderer line)
     {
         line.material.color = Color.red;
@@ -61,7 +73,28 @@ public class PlayerRay : MonoBehaviour
                     lastray = hit.collider.gameObject.name;
                 }
 
-                
+                if (hit.collider.gameObject.name == "Start")
+                {
+                    var image = StartButton.GetComponent<Image>();
+                    image.color = Color.gray;
+                }
+                else
+                {
+                    var image = StartButton.GetComponent<Image>();
+                    image.color = Color.white;
+                }
+
+                if (hit.collider.gameObject.name == "ExitCanvas")
+                {
+                    var image = ExitCanvas.GetComponent<Image>();
+                    image.color = Color.gray;
+                }
+                else
+                {
+                    var image = ExitCanvas.GetComponent<Image>();
+                    image.color = Color.white;
+                }
+
 
                 if (SteamVR_Actions._default.TouchPadLasterButtonA[SteamVR_Input_Sources.RightHand].stateUp && laserOnCooldown)
                 {
@@ -115,6 +148,34 @@ public class PlayerRay : MonoBehaviour
                         CeilButton.transform.position = new Vector3(0f, 1000f, 0f);
                     }
 
+                    if (hit.collider.gameObject.name == "Start")
+                    {
+                        char a = (char) Random.Range('a', 'z');
+                        char b = (char)Random.Range('a', 'z');
+                        char c = (char)Random.Range('a', 'z');
+                        char d = (char)Random.Range('a', 'z');
+                        StringBuilder code = new StringBuilder();
+                        code.Append(a);
+                        code.Append(b);
+                        code.Append(c);
+                        code.Append(d);
+                        CreateSession(code.ToString());
+                        Debug.Log(code.ToString());
+                    }
+
+                    if (hit.collider.gameObject.name == "ExitCanvas")
+                    {
+                        // save any game data here
+                        #if UNITY_EDITOR
+                        // Application.Quit() does not work in the editor so
+                        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+                        UnityEditor.EditorApplication.isPlaying = false;
+                        #else
+                        Application.Quit();
+                        #endif
+                    }
+
+
 
                     LaserSend.Play();
                     PostRequest(command);
@@ -124,11 +185,18 @@ public class PlayerRay : MonoBehaviour
             else
             {
                 lineRenderer.SetPosition(1, endPosition);
+                var image = StartButton.GetComponent<Image>();
+                image.color = Color.white;
             }
         }
         else
         {
             lineRenderer.enabled = false;
+            var image = StartButton.GetComponent<Image>();
+            image.color = Color.white;
+            var image2 = ExitCanvas.GetComponent<Image>();
+            image2.color = Color.white;
+
         }
     }
 }

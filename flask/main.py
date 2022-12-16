@@ -8,6 +8,9 @@ logging.basicConfig(filename='logging.log', level=logging.DEBUG)
 
 q_VR= list()
 q_SITE = list()
+sessions = {}
+
+
 
 
 @app.route('/', methods=['GET'])
@@ -35,6 +38,23 @@ def get_action():
         return jsonify({'action': q_SITE.pop(0)})
     else:
         return jsonify({'action': 'Something went wrong'})
+
+
+@app.route('/create_session', methods=['GET', 'POST'])
+def create_session():
+    code = request.args['code']
+    sessions[code + "_VR"] = []
+    sessions[code + "_SITE"] = []
+    return jsonify({'status': 'OK'})
+
+
+@app.route('/find_session', methods=['GET', 'POST'])
+def find_session():
+    code = request.args['code']
+    if code in sessions:
+        return jsonify({'status': 'OK'})
+    else:
+        return jsonify({'status': "Something went wrong"})
 
 
 
