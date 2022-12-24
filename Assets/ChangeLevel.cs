@@ -11,6 +11,7 @@ public class ChangeLevel : MonoBehaviour
     public float x;
     public float y;
     public float z;
+    public AudioSource lightsOn;
     void Start()
     {
         
@@ -26,9 +27,24 @@ public class ChangeLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene(LevelName);
-            GiveCommand.StaticPostRequest("CompleteLevel");
-            player.transform.position = new Vector3(x, y, z);
+            Valve.VR.SteamVR_Fade.Start(Color.black, 0.5f);
+            StartCoroutine(waiter());
+            
         }
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(LevelName);
+        player.transform.position = new Vector3(x, y, z);
+        lightsOn.Play();
+        yield return new WaitForSeconds(1f);
+        GiveCommand.StaticPostRequest("CompleteLevel");
+        Valve.VR.SteamVR_Fade.Start(Color.white, 0f);
+        Valve.VR.SteamVR_Fade.Start(Color.clear, 0.5f);
+
+
+
     }
 }

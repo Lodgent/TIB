@@ -12,6 +12,7 @@ public class HostPort
 {
     public static string host = "26.100.4.13";
     public static string port = "5000";
+    public static string code = "";
 }
 
 

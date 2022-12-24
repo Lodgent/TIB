@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class Kill : MonoBehaviour
@@ -24,8 +25,24 @@ public class Kill : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.transform.position = new Vector3(x, y, z);
+            Valve.VR.SteamVR_Fade.Start(Color.black, 0.25f);
             source.Play();
+            StartCoroutine(waiter());
+            
         }
     }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        player.transform.position = new Vector3(x, y, z);
+        yield return new WaitForSeconds(0.5f);
+        Valve.VR.SteamVR_Fade.Start(Color.clear, 0.5f);
+        //set and start fade to
+
+
+
+    }
+
+
 }

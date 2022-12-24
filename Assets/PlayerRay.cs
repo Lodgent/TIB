@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Valve.VR;
+using TMPro;
+using Scene = UnityEditor.SearchService.Scene;
 
 public class PlayerRay : MonoBehaviour
 {
@@ -20,6 +25,7 @@ public class PlayerRay : MonoBehaviour
     public string lastray;
     public GameObject StartButton;
     public GameObject ExitCanvas;
+    public GameObject jackbox;
     void Start()
     {
         LaserOn.volume = 0.5f;
@@ -67,34 +73,43 @@ public class PlayerRay : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 lineRenderer.SetPosition(1, hit.point);
+
+                //level 0!!!
+                if (SceneManager.GetActiveScene().name == "Level0")
+                {
+                    if (hit.collider.gameObject.name == "Start")
+                    {
+                        var image = StartButton.GetComponent<Image>();
+                        image.color = Color.gray;
+                    }
+                    else
+                    {
+                        var image = StartButton.GetComponent<Image>();
+                        image.color = Color.white;
+                    }
+
+                    if (hit.collider.gameObject.name == "ExitCanvas")
+                    {
+                        var image = ExitCanvas.GetComponent<Image>();
+                        image.color = Color.gray;
+                    }
+                    else
+                    {
+                        var image = ExitCanvas.GetComponent<Image>();
+                        image.color = Color.white;
+                    }
+                }
+
+
+
+
                 if (hit.collider.gameObject.name != lastray)
                 {
                     SteamVR_Actions.default_Haptic[SteamVR_Input_Sources.RightHand].Execute(0, 0.2f, 5, 0.2f);
                     lastray = hit.collider.gameObject.name;
                 }
 
-                if (hit.collider.gameObject.name == "Start")
-                {
-                    var image = StartButton.GetComponent<Image>();
-                    image.color = Color.gray;
-                }
-                else
-                {
-                    var image = StartButton.GetComponent<Image>();
-                    image.color = Color.white;
-                }
-
-                if (hit.collider.gameObject.name == "ExitCanvas")
-                {
-                    var image = ExitCanvas.GetComponent<Image>();
-                    image.color = Color.gray;
-                }
-                else
-                {
-                    var image = ExitCanvas.GetComponent<Image>();
-                    image.color = Color.white;
-                }
-
+               
 
                 if (SteamVR_Actions._default.TouchPadLasterButtonA[SteamVR_Input_Sources.RightHand].stateUp && laserOnCooldown)
                 {
@@ -160,7 +175,10 @@ public class PlayerRay : MonoBehaviour
                         code.Append(c);
                         code.Append(d);
                         CreateSession(code.ToString());
-                        Debug.Log(code.ToString());
+                        HostPort.code = code.ToString();
+                        TMP_Text textmeshPro = jackbox.GetComponent<TextMeshProUGUI>();
+                        textmeshPro.text = code.ToString();
+                        //Debug.Log(code.ToString());
                     }
 
                     if (hit.collider.gameObject.name == "ExitCanvas")
@@ -185,17 +203,24 @@ public class PlayerRay : MonoBehaviour
             else
             {
                 lineRenderer.SetPosition(1, endPosition);
-                var image = StartButton.GetComponent<Image>();
-                image.color = Color.white;
+                //level0
+                if (SceneManager.GetActiveScene().name == "Level0")
+                {
+                    var image = StartButton.GetComponent<Image>();
+                    image.color = Color.white;
+                }
             }
         }
         else
         {
             lineRenderer.enabled = false;
-            var image = StartButton.GetComponent<Image>();
-            image.color = Color.white;
-            var image2 = ExitCanvas.GetComponent<Image>();
-            image2.color = Color.white;
+            if (SceneManager.GetActiveScene().name == "Level0")
+            {
+                var image = StartButton.GetComponent<Image>();
+                image.color = Color.white;
+                var image2 = ExitCanvas.GetComponent<Image>();
+                image2.color = Color.white;
+            }
 
         }
     }

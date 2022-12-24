@@ -4916,6 +4916,9 @@ MonoBehaviour:
   LaserOn: {fileID: 748672714}
   LaserSend: {fileID: 748672713}
   lastray: 
+  StartButton: {fileID: 0}
+  ExitCanvas: {fileID: 0}
+  jackbox: {fileID: 0}
 --- !u!120 &748672708
 LineRenderer:
   m_ObjectHideFlags: 0
