@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Valve.VR;
 using TMPro;
-using Scene = UnityEditor.SearchService.Scene;
 
 public class PlayerRay : MonoBehaviour
 {
