@@ -6,9 +6,24 @@
    <link rel="stylesheet" href="style.css">
  </head>
  <body>
-    <div class="game_field"></div>
+
+    <div class="menu">
+      <h2>Thinking Inside The Box</h2>
+      <form id="menu" name="my">
+        <div>
+          <input name="code" placeholder="Введите код комнаты">
+        </div>
+        <button></button>
+      </form>
+    </div>
+    <div class="creators">
+      <p>Создатели:</p>
+      <img src="images/Logo.png">
+    </div>
+
+    <div class="game_field hidden"></div>
     
-    <div id = "inventory" class="inv_field">
+    <div id = "inventory" class="inv_field hidden">
       <div class="current_field">
         <p>Текущая поверхность: <span id="field"></span></p>
       </div>

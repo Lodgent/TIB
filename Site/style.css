@@ -1,5 +1,16 @@
+html{
+    background-image: url("images/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 body{
     margin: 0;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.flex{
     display: flex;
 }
 
@@ -15,14 +26,14 @@ li{
     width: 100%;
     height: 25px;
     box-sizing: border-box;
-    margin-bottom: 1px;
 }
 
 .game_field{
-    width: 75%;
-    min-height: 969px;
-    background-color: black;
-    border: 5px solid green;
+    width: 1427px;
+    min-height: 935px;
+    background-image: url("images/whaiting.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
     box-sizing: border-box;
 }
 
@@ -37,12 +48,19 @@ li{
     font-size: 20px;
 }
 
+.block{
+    background-image: url("images/floor.jpg");
+    background-size: 100% 100%;
+}
+
 .inv_field{
-    width: 25%;
+    width: 500px;
     background-color: aqua;
 }
 
 .game{
+    background-image: url("images/field.gif");
+    background-size: 100% auto;
     margin: 0 auto;
     height: 100%;
 }
@@ -54,8 +72,6 @@ li{
 .game li{
     height: var(--element-height);
     width: var(--element-width);
-    border-radius: 20%;
-    border: 2px solid cyan;
     float: left;
 }
 
@@ -169,7 +185,8 @@ li{
 }
 
 .watershow{
-    background-color: blue;
+    background-image: url("images/Water.png");
+    background-size: cover;
 }
 
 .platform{
@@ -177,7 +194,8 @@ li{
 }
 
 .buttonshow{
-    background-color: gray;
+    background-image: url("images/BlackButton.png");
+    background-size: 100% 100%;
 }
 
 .platform_button_show{
@@ -191,3 +209,71 @@ li{
 .blue_platform_button_show{
     background-color: blue;
 }
+
+.menu{
+    padding-top: 27px;
+    margin: 0 auto;
+    margin-top: 15%;
+    background-color: rgba(166, 166, 166, 0.7);
+    width: 708px;
+    height: 300px;
+    margin-bottom: 130px;
+}
+
+.menu h2{
+    margin-top: 0;
+    font-family: 'Inter';
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 21px;
+}
+
+form{
+    text-align: center;
+}
+
+form div{
+    margin-bottom: 45px;
+}
+
+form input{
+    font-size: 50px;
+    text-align: center;
+    width: 560px;
+    height: 73px;
+}
+
+form button{
+    width: 156px;
+    height: 49px;
+    background-image: url("images/PlayButton.png");
+    background-size: cover;
+    border-radius: 27px;
+    border: 0px;
+}
+
+.creators{
+    width: 152px;
+    height: 182;
+    margin-left: auto;
+}
+
+.creators p{
+    margin-top: 0;
+    margin-bottom: 11px;
+    color: white;
+    font-family: 'Inter';
+    font-size: 29px;
+}
+
+.creators img{
+    width: 143px;
+    height: 136px;
+}
+
+input::placeholder {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+  }
