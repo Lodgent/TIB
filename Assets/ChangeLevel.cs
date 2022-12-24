@@ -27,24 +27,16 @@ public class ChangeLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Valve.VR.SteamVR_Fade.Start(Color.black, 0.5f);
-            StartCoroutine(waiter());
-            
+            //Valve.VR.SteamVR_Fade.Start(Color.black, 0.5f);
+            //SceneManager.LoadScene(LevelName);
+            //Valve.VR.SteamVR_Fade.Start(Color.clear, 0.5f);
+            //StartCoroutine(waiter());
+            player.transform.position = new Vector3(x, y, z);
+            Valve.VR.SteamVR_LoadLevel.Begin(LevelName, true, 1f);
+            player.transform.position = new Vector3(x, y, z);
+            lightsOn.Play();
+            //StartCoroutine(waiter2());
+
         }
-    }
-
-    IEnumerator waiter()
-    {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(LevelName);
-        player.transform.position = new Vector3(x, y, z);
-        lightsOn.Play();
-        yield return new WaitForSeconds(1f);
-        GiveCommand.StaticPostRequest("CompleteLevel");
-        Valve.VR.SteamVR_Fade.Start(Color.white, 0f);
-        Valve.VR.SteamVR_Fade.Start(Color.clear, 0.5f);
-
-
-
     }
 }

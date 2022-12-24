@@ -26,12 +26,14 @@ public class PlayerRay : MonoBehaviour
     public GameObject StartButton;
     public GameObject ExitCanvas;
     public GameObject jackbox;
+    private bool startOnce;
     void Start()
     {
         LaserOn.volume = 0.5f;
         lineRenderer.material.color = Color.green;
         laserOnCooldown = true;
         lastray = "";
+        startOnce = false;
     }
     public void PostRequest(string action)
     {
@@ -163,7 +165,7 @@ public class PlayerRay : MonoBehaviour
                         CeilButton.transform.position = new Vector3(0f, 1000f, 0f);
                     }
 
-                    if (hit.collider.gameObject.name == "Start")
+                    if (hit.collider.gameObject.name == "Start" && !startOnce)
                     {
                         char a = (char) Random.Range('a', 'z');
                         char b = (char)Random.Range('a', 'z');
@@ -178,6 +180,7 @@ public class PlayerRay : MonoBehaviour
                         HostPort.code = code.ToString();
                         TMP_Text textmeshPro = jackbox.GetComponent<TextMeshProUGUI>();
                         textmeshPro.text = code.ToString();
+                        startOnce = true;
                         //Debug.Log(code.ToString());
                     }
 
