@@ -51,7 +51,7 @@ def create_session():
 @app.route('/find_session', methods=['GET', 'POST'])
 def find_session():
     code = request.args['code']
-    if code in sessions:
+    if code + "_VR" in sessions:
         return jsonify({'status': 'OK'})
     else:
         return jsonify({'status': "Something went wrong"})
