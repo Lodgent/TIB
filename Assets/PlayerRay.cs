@@ -85,7 +85,7 @@ public class PlayerRay : MonoBehaviour
                     else
                     {
                         var image = StartButton.GetComponent<Image>();
-                        image.color = Color.white;
+                        image.color = Color.black;
                     }
 
                     if (hit.collider.gameObject.name == "ExitCanvas")
@@ -96,7 +96,7 @@ public class PlayerRay : MonoBehaviour
                     else
                     {
                         var image = ExitCanvas.GetComponent<Image>();
-                        image.color = Color.white;
+                        image.color = Color.black;
                     }
                 }
 
@@ -177,7 +177,7 @@ public class PlayerRay : MonoBehaviour
                         CreateSession(code.ToString());
                         HostPort.code = code.ToString();
                         TMP_Text textmeshPro = jackbox.GetComponent<TextMeshProUGUI>();
-                        textmeshPro.text = code.ToString();
+                        textmeshPro.text = "Сообщите код ниже:\n             " + code.ToString();
                         startOnce = true;
                         //Debug.Log(code.ToString());
                     }
@@ -208,7 +208,7 @@ public class PlayerRay : MonoBehaviour
                 if (SceneManager.GetActiveScene().name == "Level0")
                 {
                     var image = StartButton.GetComponent<Image>();
-                    image.color = Color.white;
+                    image.color = Color.black;
                 }
             }
         }
@@ -218,9 +218,9 @@ public class PlayerRay : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "Level0")
             {
                 var image = StartButton.GetComponent<Image>();
-                image.color = Color.white;
+                image.color = Color.black;
                 var image2 = ExitCanvas.GetComponent<Image>();
-                image2.color = Color.white;
+                image2.color = Color.black;
             }
 
         }

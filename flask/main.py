@@ -52,7 +52,7 @@ def create_session():
 def find_session():
     code = request.args['code']
     if code + "_VR" in sessions:
-        return jsonify({'status': 'OK'})
+        return jsonify({'status': 'Session find!'})
     else:
         return jsonify({'status': "Something went wrong"})
 
