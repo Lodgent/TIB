@@ -27,7 +27,8 @@ export function SetPlatform(){
         min = 0
     }
     let game_field = document.querySelector('.' + activeLevel.platformPosition).children
-    for (let index = 0; index < 2; index++) {
+    for (let index = activeLevel.y - 2; index < activeLevel.y; index++) {
+        console.log(activeLevel.y)
         for (let j = activeLevel.platformStart; j < activeLevel.platformStart + 2; j++) {
             let element = game_field[index].childNodes[j]
             element.classList.add("platform")

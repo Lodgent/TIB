@@ -1,7 +1,12 @@
-html{
+
+.game_back{
     background-image: url("images/background.png");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.main_back{
+    background-image: url("images/mainBackground.png");
 }
 
 body{
@@ -39,9 +44,9 @@ li{
 
 .current_field{
     text-align: center;
-    background-color: black;
-    color: cyan;
-    border: 5px solid green;
+    background-color: #ECE9E6;
+    color: black;
+    border: 5px solid black;
 }
 
 .current_field p{
@@ -55,7 +60,7 @@ li{
 
 .inv_field{
     width: 500px;
-    background-color: aqua;
+    background-color: #ECE9E6;
 }
 
 .game{
@@ -185,12 +190,13 @@ li{
 }
 
 .watershow{
-    background-image: url("images/Water.png");
+    background-image: url("images/Water1.gif");
     background-size: cover;
 }
 
 .platform{
-    background-color: brown;
+    background-image: url("images/Platform.png");
+    background-size: 100% 100%;
 }
 
 .buttonshow{
@@ -199,22 +205,25 @@ li{
 }
 
 .platform_button_show{
-    background-color: white;
+    background-image: url("images/WhitePlatform.png");
+    background-size: 100% 100%;
 }
 
 .green_platform_button_show{
-    background-color: green;
+    background-image: url("images/GreenPlatform.png");
+    background-size: 100% 100%;
 }
 
 .blue_platform_button_show{
-    background-color: blue;
+    background-image: url("images/BluePlatform.png");
+    background-size: 100% 100%;
 }
 
 .menu{
     padding-top: 27px;
     margin: 0 auto;
     margin-top: 15%;
-    background-color: rgba(166, 166, 166, 0.7);
+    background-color: #ECE9E6;
     width: 708px;
     height: 300px;
     margin-bottom: 130px;
@@ -261,7 +270,6 @@ form button{
 .creators p{
     margin-top: 0;
     margin-bottom: 11px;
-    color: white;
     font-family: 'Inter';
     font-size: 29px;
 }

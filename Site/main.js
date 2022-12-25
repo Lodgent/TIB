@@ -44,6 +44,10 @@ setInterval(function GETRequest() {
                 document.querySelector(".game_field").classList.remove("hidden")
                 document.querySelector(".inv_field").classList.remove("hidden")
                 document.body.classList.add("flex")
+                console.log(document)
+                let html = document.querySelector(".main_back")
+                html.classList.remove("main_back")
+                html.classList.add("game_back")
                 CreateLevel()
             }
         }

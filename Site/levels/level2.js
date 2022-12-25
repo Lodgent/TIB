@@ -1,8 +1,9 @@
 export let platformDir = "vertical"
 export let platformPosition = 'floor3'
-export let platformStart = 12
+export let platformStart = 13
 export let platformDelta = 36
 export let timeMovePlatform = 1100
+export let y = 11
 
 export let floor1 = [
     "EEBEEBEEBEEBEEBEEBEEE",
