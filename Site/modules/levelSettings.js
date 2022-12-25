@@ -1,8 +1,8 @@
 import { GiveEscapeButton } from '/main.js';
 import * as level1 from '/levels/level1.js';
 import * as level2 from '/levels/level2.js';
-let windowH = 969
-let windowW = 1416
+let windowH = 935
+let windowW = 1421.8
 let levels = [level1, level2]
 let levelsData = [{
     'floor': level1.floor, 
@@ -36,6 +36,7 @@ function SetAllGameFields(field, map, shify){
           let li = document.createElement('li');
           if (map[i][j] == 'E'){
             li.onclick = function() { GiveEscapeButton(i, shify, j) }
+            li.classList.add("block")
           }
           else if(map[i][j] == 'D'){
             li.classList.add("water")
@@ -55,13 +56,13 @@ function SetAllGameFields(field, map, shify){
             li.classList.add("blue_platform_button")
             li.onclick = function() { GiveEscapeButton(i, shify, j, "blue_platform") }
           }
-          li.style.setProperty('--element-height', Math.floor(windowH / map.length) + 'px')
-          li.style.setProperty('--element-width', Math.floor(windowW / map[i].length) + 'px')
+          li.style.setProperty('--element-height', windowH / map.length + 'px')
+          li.style.setProperty('--element-width', windowW / map[i].length + 'px')
           ull.append(li)
       }
       firstUl.append(ull)
   }
-  document.body.children[0].append(firstUl)
+  document.querySelector(".game_field").append(firstUl)
 }
 
 export function CompleteLevel(){

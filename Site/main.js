@@ -3,10 +3,18 @@ import { PlaySound } from "../modules/playSound.js";
 import { TakeInventory, clickedInvItem } from './modules/inventory.js';
 import { SetField, field } from './modules/setField.js';
 import { SetPlatform } from './modules/platform.js';
+import { CreateLevel } from './modules/levelSettings.js';
 
-const requestURL = 'http://25.32.13.14:5000'
+const requestURL = 'http://26.100.4.13:5000'
 let xhr = new XMLHttpRequest();
-level.CreateLevel()
+let code = ""
+const applicantForm = document.getElementById('menu')
+applicantForm.addEventListener('submit', handleFormSubmit)
+function handleFormSubmit(event) {
+    event.preventDefault()
+    code = applicantForm.elements.code.value
+    GiveCode(code)
+}
 
 setInterval(function GETRequest() {
     return new Promise((resolve, reject) => {
@@ -30,6 +38,14 @@ setInterval(function GETRequest() {
             if(info == 'ActivatePlatform'){ SetPlatform() }
             if(info == 'CompleteLevel') { level.CompleteLevel() }
             if(info == 'Symbols') { TakeInventory(document.querySelector(".item_list"), "symbols") }
+            if(info == "Session find!") { 
+                document.querySelector(".menu").classList.add("hidden")
+                document.querySelector(".creators").classList.add("hidden")
+                document.querySelector(".game_field").classList.remove("hidden")
+                document.querySelector(".inv_field").classList.remove("hidden")
+                document.body.classList.add("flex")
+                CreateLevel()
+            }
         }
         xhr.send()
     })}, 1000)
@@ -73,6 +89,13 @@ export function GiveMovePlatform(action, direction) {
         xhr.open('POST', requestURL + '/action?action=MovePlatform'+direction + action +'&device=VR')
         xhr.send()
     })}
+
+export function GiveCode(code) {
+    return new Promise((resolve, reject) => {
+        xhr.open('POST', requestURL + '/find_session?code='+code)
+        xhr.send()
+    })}
+
 
 function ShowWater(){
     let waters = document.querySelectorAll(".water")
