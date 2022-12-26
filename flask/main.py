@@ -1,13 +1,11 @@
 from flask import Flask, request, json, Response, jsonify, render_template
 from flask_cors import CORS
 import logging
+import sys
 
 app = Flask(__name__)
 CORS(app)
 logging.basicConfig(filename='logging.log', level=logging.DEBUG)
-
-q_VR= list()
-q_SITE = list()
 sessions = {}
 
 
@@ -22,22 +20,25 @@ def start():
 def action():
     do_action = request.args['action']
     device = request.args['device']
+    code = request.args['code']
     if device == 'VR':
-        q_VR.append(do_action)
+        sessions[code + '_VR'].append(do_action)
     else:
-        q_SITE.append(do_action)
+        sessions[code + '_SITE'].append(do_action)
     return jsonify({'status': 'OK'})
 
 
 @app.route('/get_action', methods=['GET', 'POST'])
 def get_action():
     device = request.args['device']
-    if device == 'VR' and q_VR:
-        return jsonify({'action': q_VR.pop(0)})
-    elif device == 'SITE' and q_SITE:
-        return jsonify({'action': q_SITE.pop(0)})
-    else:
-        return jsonify({'action': 'Something went wrong'})
+    code = request.args['code']
+    if device == 'VR' and code + '_VR' in sessions:
+        if len(sessions[code + '_VR']):
+            return jsonify({'action': sessions[code + '_VR'].pop(0)})
+    elif device == 'SITE' and code + '_SITE' in sessions:
+        if len(sessions[code + '_SITE']):
+            return jsonify({'action': sessions[code + '_SITE'].pop(0)})
+    return jsonify({'action': 'Something went wrong'})
 
 
 @app.route('/create_session', methods=['GET', 'POST'])
@@ -58,4 +59,4 @@ def find_session():
 
 
 
-app.run(host="26.100.4.13")
+app.run(host="26.100.4.13", debug=True)

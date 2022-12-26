@@ -36,7 +36,7 @@ public class PlayerRay : MonoBehaviour
     }
     public void PostRequest(string action)
     {
-        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + action + "&device=SITE";
+        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + action + "&device=SITE&code="+HostPort.code;
         UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
         request.SendWebRequest();
 
@@ -176,8 +176,8 @@ public class PlayerRay : MonoBehaviour
                         code.Append(b);
                         code.Append(c);
                         code.Append(d);
-                        CreateSession(code.ToString());
-                        HostPort.code = code.ToString();
+                        CreateSession(code.ToString().ToUpper());
+                        HostPort.code = code.ToString().ToUpper();
                         TMP_Text textmeshPro = jackbox.GetComponent<TextMeshProUGUI>();
                         Text startmeshpro = startCanvas.GetComponent<Text>();
                         textmeshPro.text = "     " + code.ToString().ToUpper();

@@ -62,7 +62,7 @@ public class WebRequests : MonoBehaviour
 
     void Update()
     {
-        WebRequest request = WebRequest.Create("http://" + HostPort.host + ":" + HostPort.port + "/get_action?device=VR");
+        WebRequest request = WebRequest.Create("http://" + HostPort.host + ":" + HostPort.port + "/get_action?device=VR&code=" + HostPort.code);
         WebResponse response = request.GetResponse();
         request.Method = "POST";
         var httpResponse = (HttpWebResponse)request.GetResponse();
