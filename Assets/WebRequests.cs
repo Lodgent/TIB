@@ -24,11 +24,16 @@ public class WebRequests : MonoBehaviour
     public GameObject BlueButton;
     public GameObject GreenButton;
     public GameObject CeilButton;
+    private bool IsGameStarted;
+    public GameObject door;
+    public AudioSource DoorOpen;
+    public AudioSource DoorOpenMechanic;
 
 
     void Start()
     {
         MovePlatform.volume = 0.5f;
+        IsGameStarted = false;
     }
 
     void spawn_object(GameObject obj, string[] commands, float deltaX, float deltaY, float deltaZ)
@@ -136,6 +141,27 @@ public class WebRequests : MonoBehaviour
         {
             spawn_object(CeilButton, commands, -2f, -16f, 24f);
         }
+        else if (commands[0] == "start_game")
+        {
+            if (!IsGameStarted)
+            {
+                IsGameStarted = true;
+                StartCoroutine(start_game(door));
+            }
+        }
+    }
+
+    IEnumerator start_game(GameObject Door)
+    {
+        DoorOpen.Play();
+        yield return new WaitForSeconds(2);
+        DoorOpenMechanic.Play();
+        for (int i = 0; i < 30; i++)
+        {
+            Door.transform.position = new Vector3(Door.transform.position.x, Door.transform.position.y + 0.06f, Door.transform.position.z);
+            yield return new WaitForSeconds(0.03f);
+        }
+
     }
 
     public GameObject GreenGet()

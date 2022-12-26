@@ -24,6 +24,7 @@ public class PlayerRay : MonoBehaviour
     public GameObject StartButton;
     public GameObject ExitCanvas;
     public GameObject jackbox;
+    public GameObject startCanvas;
     private bool startOnce;
     void Start()
     {
@@ -117,6 +118,7 @@ public class PlayerRay : MonoBehaviour
                     string command = hit.collider.gameObject.name;
                     if (hit.collider.gameObject.name == "Stem" || hit.collider.gameObject.name == "Push")
                     {
+                        EscapeButton = GameObject.Find("StemAndPush");
                         command = "GiveEscapeButton";
                         EscapeButton.SetActive(false);
                     }
@@ -177,7 +179,9 @@ public class PlayerRay : MonoBehaviour
                         CreateSession(code.ToString());
                         HostPort.code = code.ToString();
                         TMP_Text textmeshPro = jackbox.GetComponent<TextMeshProUGUI>();
-                        textmeshPro.text = "Сообщите код ниже:\n             " + code.ToString();
+                        Text startmeshpro = startCanvas.GetComponent<Text>();
+                        textmeshPro.text = "     " + code.ToString().ToUpper();
+                        startmeshpro.text = "Код успешно сгенерирован\nВзгляните на монитор напротив";
                         startOnce = true;
                         //Debug.Log(code.ToString());
                     }

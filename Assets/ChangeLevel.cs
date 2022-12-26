@@ -34,6 +34,7 @@ public class ChangeLevel : MonoBehaviour
             player.transform.position = new Vector3(x, y, z);
             Valve.VR.SteamVR_LoadLevel.Begin(LevelName, true, 1f);
             player.transform.position = new Vector3(x, y, z);
+            GiveCommand.StaticPostRequest("CompleteLevel");
             lightsOn.Play();
             //StartCoroutine(waiter2());
 

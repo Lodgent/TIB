@@ -4919,6 +4919,7 @@ MonoBehaviour:
   StartButton: {fileID: 0}
   ExitCanvas: {fileID: 0}
   jackbox: {fileID: 0}
+  startCanvas: {fileID: 0}
 --- !u!120 &748672708
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -9559,7 +9560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.183, y: 270.174, z: -0.058}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.9834604, y: 5.0864725}
+  m_AnchoredPosition: {x: -0.95, y: 5.0864725}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1219598375 stripped
@@ -10846,6 +10847,9 @@ MonoBehaviour:
   BlueButton: {fileID: 300241938}
   GreenButton: {fileID: 651530441}
   CeilButton: {fileID: 1561285962}
+  door: {fileID: 0}
+  DoorOpen: {fileID: 0}
+  DoorOpenMechanic: {fileID: 0}
 --- !u!82 &1312522142
 AudioSource:
   m_ObjectHideFlags: 0
