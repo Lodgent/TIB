@@ -6,9 +6,11 @@ import sys
 app = Flask(__name__)
 CORS(app)
 logging.basicConfig(filename='logging.log', level=logging.DEBUG)
-sessions = {}
+sessions = {
+    "AAAA_VR": [],
+    "AAAA_SITE": []
 
-
+}
 
 
 @app.route('/', methods=['GET'])
