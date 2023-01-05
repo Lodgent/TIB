@@ -18,8 +18,8 @@ function handleFormSubmit(event) {
 
 setInterval(function GETRequest() {
     return new Promise((resolve, reject) => {
-        xhr.open('POST', requestURL + '/get_action?device=SITE');
-        
+        xhr.open('POST', requestURL + '/get_action?device=SITE&code=' + code);
+        console.log(code)
         xhr.onload = () => {
             let a = JSON.parse(xhr.response)
             let info = JSON.stringify(a).split(":")[1]
@@ -38,17 +38,19 @@ setInterval(function GETRequest() {
             if(info == 'ActivatePlatform'){ SetPlatform() }
             if(info == 'CompleteLevel') { level.CompleteLevel() }
             if(info == 'Symbols') { TakeInventory(document.querySelector(".item_list"), "symbols") }
-            if(info == "Session find!") { 
+            if(info == "Session find!") {
+                StartGameServer(code)
                 document.querySelector(".menu").classList.add("hidden")
                 document.querySelector(".creators").classList.add("hidden")
                 document.querySelector(".game_field").classList.remove("hidden")
                 document.querySelector(".inv_field").classList.remove("hidden")
                 document.body.classList.add("flex")
-                console.log(document)
                 let html = document.querySelector(".main_back")
                 html.classList.remove("main_back")
                 html.classList.add("game_back")
                 CreateLevel()
+                SetField("floor")
+                TakeInventory(document.querySelector(".item_list"), "button")
             }
         }
         xhr.send()
@@ -77,20 +79,24 @@ export function GiveEscapeButton(x, y, z, platform='basic') {
             clickedInvItem.remove()
             PlaySound('../sounds/laser_send.mp3')
             if(clickedInvItem.querySelector("div").className == "ceil_button"){
-                xhr.open('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+''+field[field.length - 1]+':'+x+','+y+','+z+'&device=VR'); 
-                console.log('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+''+field[field.length - 1]+':'+x+','+y+','+z+'&device=VR')
+                xhr.open('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+''+field[field.length - 1]+':'+x+','+y+','+z+'&device=VR&code=' + code); 
             }
             else{
-                xhr.open('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+':'+x+','+y+','+z+'&device=VR');
-                console.log('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+':'+x+','+y+','+z+'&device=VR')
+                xhr.open('POST', requestURL + '/action?action='+clickedInvItem.querySelector("div").className+':'+x+','+y+','+z+'&device=VR&code=' + code);
             }
             xhr.send()
         }
     })}
 
+function StartGameServer(code){
+    return new Promise((resolve, reject) => {
+        xhr.open('POST', requestURL + '/action?action=start_game&device=VR&code=' + code)
+        xhr.send()
+    })}
+
 export function GiveMovePlatform(action, direction) {
     return new Promise((resolve, reject) => {
-        xhr.open('POST', requestURL + '/action?action=MovePlatform'+direction + action +'&device=VR')
+        xhr.open('POST', requestURL + '/action?action=MovePlatform'+direction + action +'&device=VR&code=' + code)
         xhr.send()
     })}
 
