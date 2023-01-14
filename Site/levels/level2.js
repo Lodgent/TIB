@@ -1,7 +1,7 @@
 export let platformDir = "vertical"
 export let platformPosition = 'floor3'
 export let platformStart = 13
-export let platformDelta = 40
+export let platformDelta = 50
 export let timeMovePlatform = 1100
 export let y = 9
 

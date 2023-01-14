@@ -3,7 +3,7 @@ import { PlaySound } from "../modules/playSound.js";
 import { TakeInventory, clickedInvItem } from './modules/inventory.js';
 import { SetField, field } from './modules/setField.js';
 import { SetPlatform } from './modules/platform.js';
-import { CreateLevel } from './modules/levelSettings.js';
+import { CreateLevel, number} from './modules/levelSettings.js';
 
 const requestURL = 'http://26.100.4.13:5000'
 let xhr = new XMLHttpRequest();
@@ -15,10 +15,6 @@ function handleFormSubmit(event) {
     code = applicantForm.elements.code.value
     GiveCode(code)
 }
-code = "AAAA"
-CorrectCode()
-SetField("floor")
-TakeInventory(document.querySelector(".item_list"), "example_button")
 
 setInterval(function GETRequest() {
     return new Promise((resolve, reject) => {
@@ -41,6 +37,7 @@ setInterval(function GETRequest() {
             if(info == 'BlueBlock') { BlueShowPlatform() }
             if((info.includes('Ceil') || info.includes('Floor')) && !info.includes('Button')){ SetField(info) }
             if(info == 'ActivatePlatform'){ SetPlatform() }
+            if(info == 'CompleteLevel0') { if(number == 1) {level.CompleteLevel()} }
             if(info == 'CompleteLevel') { level.CompleteLevel() }
             if(info == 'Symbols') { TakeInventory(document.querySelector(".item_list"), "symbols") }
             if(info == "Session find!") { CorrectCode() }

@@ -4,7 +4,7 @@ import * as level2 from '/levels/level2.js'
 import * as level0 from '/levels/level0.js'
 let windowH = 935
 let windowW = 1421.8
-let levels = [level1, level2]
+let levels = [level0, level1, level2]
 let levelsData = [{
     'floor': level0.floor,
     'ceil' : level0.ceil}, {
@@ -16,7 +16,7 @@ let levelsData = [{
         'ceil2' : level2.ceil2,
         'floor3': level2.floor3,
         'ceil3' : level2.ceil3}]
-let number = 1
+export let number = 1
 export let activeLevel = levels[number - 1]
 
 export function CreateLevel(){

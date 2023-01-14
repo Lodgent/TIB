@@ -143,10 +143,6 @@ li{
     pointer-events: none;
 }
 
-.not_active{
-
-}
-
 .horizontal{
     display: flex;
     justify-content: space-between;
