@@ -1,5 +1,5 @@
 # TIB / Thinking Inside the Box
-http://tib.pythonanywhere.com/
+# http://tib.pythonanywhere.com/
 ![TIB picture](https://user-images.githubusercontent.com/63664630/209946537-53c79ace-6c2e-401d-9877-bb80a85bfb6b.png)
 
 Необходимо создать VR-игру (игру в виртуальной реальности). Жанр игры - кооперативная головоломка, в которой два игрока одновременно решают задачи, чтобы проходить уровни. Управление первого игрока- клавиатура+мышь. Управление второго игрока - VR Head Set (Имеется в наличии для тестирования).
