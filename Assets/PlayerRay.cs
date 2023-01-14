@@ -37,7 +37,7 @@ public class PlayerRay : MonoBehaviour
     }
     public void PostRequest(string action)
     {
-        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + action + "&device=SITE&code="+HostPort.code;
+        var requestUrl = "http://" + HostPort.host + "/action?action=" + action + "&device=SITE&code="+HostPort.code;
         UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
         request.SendWebRequest();
 
@@ -45,7 +45,7 @@ public class PlayerRay : MonoBehaviour
 
     public void CreateSession(string code)
     {
-        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/create_session?code=" + code;
+        var requestUrl = "http://" + HostPort.host + "/create_session?code=" + code;
         UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
         request.SendWebRequest();
     }

@@ -27,7 +27,7 @@ public class GiveCommand : MonoBehaviour
 
     public void PostRequest()
     {
-        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + action + "&device=SITE" + "&code=" + HostPort.code;
+        var requestUrl = "http://" + HostPort.host + "/action?action=" + action + "&device=SITE" + "&code=" + HostPort.code;
         UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
         request.SendWebRequest();
 
@@ -35,7 +35,7 @@ public class GiveCommand : MonoBehaviour
 
     static public void StaticPostRequest(string ac)
     {
-        var requestUrl = "http://" + HostPort.host + ":" + HostPort.port + "/action?action=" + ac + "&device=SITE" + "&code=" + HostPort.code;
+        var requestUrl = "http://" + HostPort.host + "/action?action=" + ac + "&device=SITE" + "&code=" + HostPort.code;
         UnityWebRequest request = UnityWebRequest.Post(requestUrl, "");
         request.SendWebRequest();
     }
