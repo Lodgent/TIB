@@ -31,7 +31,7 @@ public class StartGame : MonoBehaviour
         player.transform.position = new Vector3(x, y, z);
         Valve.VR.SteamVR_LoadLevel.Begin("Level1", true, 1f);
         player.transform.position = new Vector3(x, y, z);
-        GiveCommand.StaticPostRequest("CompleteLevel");
+        GiveCommand.StaticPostRequest("CompleteLevel0");
         lightsUp.Play();
         //StartCoroutine(waiter2());
     }

@@ -26,6 +26,7 @@ public class Kill : MonoBehaviour
         if (other.tag == "Player")
         {
             Valve.VR.SteamVR_Fade.Start(Color.black, 0.25f);
+            player = GameObject.Find("Player");
             source.Play();
             StartCoroutine(waiter());
             

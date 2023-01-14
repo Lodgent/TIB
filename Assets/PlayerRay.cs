@@ -154,10 +154,10 @@ public class PlayerRay : MonoBehaviour
 
                     }
 
-                    if (hit.collider.gameObject.name == "ExampleButtonStem" ||
-                        hit.collider.gameObject.name == "ExampleButtonPush")
+                    if (hit.collider.gameObject.name == "ExampleStem" ||
+                        hit.collider.gameObject.name == "ExamplePush")
                     {
-                        ExampleButton = GameObject.Find("ExampleButtn");
+                        ExampleButton = GameObject.Find("ExampleButton");
                         command = "GiveExampleButton";
                         ExampleButton.SetActive(false);
 
