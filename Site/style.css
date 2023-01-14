@@ -13,6 +13,7 @@ body{
     margin: 0;
     max-width: 2000px;
     margin: 0 auto;
+    overflow:hidden;
 }
 
 .flex{
@@ -45,12 +46,12 @@ li{
 .current_field{
     text-align: center;
     background-color: #ECE9E6;
-    color: black;
-    border: 5px solid black;
+    color: #838383;
+    border: 5px solid #A6A6A6;
 }
 
 .current_field p{
-    font-size: 20px;
+    font-size: 29px;
 }
 
 .block{
@@ -89,8 +90,6 @@ li{
 .item_list li{
     width: 200px;
     height: 200px;
-    padding: 10px;
-    border: 1px solid black;
 }
 
 .item_list div{
@@ -99,7 +98,7 @@ li{
     background-size: 100%;
 }
 
-.button{
+.button, .example_button{
     background-image: url("images/Button.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -134,7 +133,18 @@ li{
 }
 
 .active{
-    background-color:brown;
+    scale: 0.5;
+    display: block;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-100%) translateX(-100%);
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.not_active{
+
 }
 
 .horizontal{
@@ -152,13 +162,14 @@ li{
     text-align: center;
     margin-top: 20px;
     padding: 10px;
-    border: 5px solid black;
+    border: 5px solid #A6A6A6;
+    color: #838383;
 }
 
 .mover p{
     margin: 0;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 29px;
 }
 
 .arrow_button{
@@ -191,10 +202,12 @@ li{
 
 .watershow{
     background-image: url("images/Water1.gif");
+    transition: 0.5s;
     background-size: cover;
 }
 
 .platform{
+    transition: 0.5s;
     background-image: url("images/Platform.png");
     background-size: 100% 100%;
 }

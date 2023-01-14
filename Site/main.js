@@ -15,6 +15,10 @@ function handleFormSubmit(event) {
     code = applicantForm.elements.code.value
     GiveCode(code)
 }
+code = "AAAA"
+CorrectCode()
+SetField("floor")
+TakeInventory(document.querySelector(".item_list"), "example_button")
 
 setInterval(function GETRequest() {
     return new Promise((resolve, reject) => {
@@ -29,6 +33,7 @@ setInterval(function GETRequest() {
             if(info == 'GiveGreenButton'){ TakeInventory(document.querySelector(".item_list"), "green_button") }
             if(info == 'GiveBlueButton'){ TakeInventory(document.querySelector(".item_list"), "blue_button") }
             if(info == 'GiveCeilButton'){ TakeInventory(document.querySelector(".item_list"), "ceil_button") }
+            if(info == 'GiveExampleButton'){ TakeInventory(document.querySelector(".item_list"), "example_button") }
             if(info == 'Water'){ ShowWater() }
             if(info == 'SequenceButton'){ ShowButton() }
             if(info == 'Block') { ShowPlatform() }
@@ -38,28 +43,44 @@ setInterval(function GETRequest() {
             if(info == 'ActivatePlatform'){ SetPlatform() }
             if(info == 'CompleteLevel') { level.CompleteLevel() }
             if(info == 'Symbols') { TakeInventory(document.querySelector(".item_list"), "symbols") }
-            if(info == "Session find!") {
-                StartGameServer(code)
-                document.querySelector(".menu").classList.add("hidden")
-                document.querySelector(".creators").classList.add("hidden")
-                document.querySelector(".game_field").classList.remove("hidden")
-                document.querySelector(".inv_field").classList.remove("hidden")
-                document.body.classList.add("flex")
-                let html = document.querySelector(".main_back")
-                html.classList.remove("main_back")
-                html.classList.add("game_back")
-                CreateLevel()
-                SetField("floor")
-                TakeInventory(document.querySelector(".item_list"), "button")
-            }
+            if(info == "Session find!") { CorrectCode() }
         }
         xhr.send()
     })}, 1000)
 
+    setInterval(function GETRequest() {
+
+        const followCursor = () => {
+          const el = document.querySelector('.active')
+      
+          window.addEventListener('mousemove', e => {
+            if(el == null) {return}
+            el.style.left = e.pageX + 'px'
+            el.style.top = e.pageY + 'px'
+          })
+        }
+      
+        followCursor()
+      
+      }, 100)
+
+function CorrectCode(){
+    StartGameServer(code)
+    document.querySelector(".menu").classList.add("hidden")
+    document.querySelector(".creators").classList.add("hidden")
+    document.querySelector(".game_field").classList.remove("hidden")
+    document.querySelector(".inv_field").classList.remove("hidden")
+    document.body.classList.add("flex")
+    let html = document.querySelector(".main_back")
+    html.classList.remove("main_back")
+    html.classList.add("game_back")
+    CreateLevel()
+}
+
 export function GiveEscapeButton(x, y, z, platform='basic') {
     return new Promise((resolve, reject) => {
         if (clickedInvItem.className != undefined) {
-            if(platform == 'basic' && clickedInvItem.querySelector("div").className != "button" && clickedInvItem.querySelector('div').className != 'ceil_button'){
+            if(platform == 'basic' && clickedInvItem.querySelector("div").className != "button" && clickedInvItem.querySelector("div").className != "example_button" && clickedInvItem.querySelector('div').className != 'ceil_button'){
                 return
             }
             if(platform == "white_platform" && (clickedInvItem.querySelector("div").className != "green_button" && clickedInvItem.querySelector("div").className != "blue_button")){
@@ -71,7 +92,7 @@ export function GiveEscapeButton(x, y, z, platform='basic') {
             if(platform == "blue_platform" && clickedInvItem.querySelector("div").className != "blue_button"){
                 return
             }
-            if(platform == 'basic' && clickedInvItem.querySelector("div").className == "ceil_button" && !field.includes('ceil')){
+            if(platform == 'basic' && clickedInvItem.querySelector("div").className == "ceil_button" && !field.includes('потолок')){
                 return
             }
             clickedInvItem.className = ''

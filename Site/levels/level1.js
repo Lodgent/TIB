@@ -1,28 +1,28 @@
-export let platformStart = 10
-export let platformDelta = 5
+export let platformStart = 8
+export let platformDelta = 3
 export let timeMovePlatform = 1600
 export let platformDir = "horizontal"
 export let platformPosition = 'floor'
 export let y = 2
 
 export let floor = [
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE",
-            "EEEEEDDDDDDDEEEEE"]
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",
+            "EEEEEDDDDDEEEEE",]
 
 export let ceil = [
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE",
-            "EEEEEEEEEEEEEEEEE"]
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",
+            "EEEEEEEEEEEEEEE",]
