@@ -26,6 +26,7 @@ public class PlayerRay : MonoBehaviour
     public GameObject jackbox;
     public GameObject startCanvas;
     private bool startOnce;
+    public GameObject ExampleButton;
     void Start()
     {
         LaserOn.volume = 0.5f;
@@ -150,6 +151,15 @@ public class PlayerRay : MonoBehaviour
                             command = "GiveBlueButton";
                             BlueButton.transform.position = new Vector3(0f, 1000f, 0f);
                         }
+
+                    }
+
+                    if (hit.collider.gameObject.name == "ExampleButtonStem" ||
+                        hit.collider.gameObject.name == "ExampleButtonPush")
+                    {
+                        ExampleButton = GameObject.Find("ExampleButtn");
+                        command = "GiveExampleButton";
+                        ExampleButton.SetActive(false);
 
                     }
 

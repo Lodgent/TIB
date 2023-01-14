@@ -28,6 +28,7 @@ public class WebRequests : MonoBehaviour
     public GameObject door;
     public AudioSource DoorOpen;
     public AudioSource DoorOpenMechanic;
+    public GameObject ExampleButton;
 
 
     void Start()
@@ -148,6 +149,32 @@ public class WebRequests : MonoBehaviour
                 IsGameStarted = true;
                 StartCoroutine(start_game(door));
             }
+        }
+        else if (commands[0] == "example_button")
+        {
+            spawn_object(ExampleButton, commands, -2.73f, -1.7f, 17.736f);
+            var deltaX = -2.73f;
+            var deltaY = -1.7f;
+            var deltaZ = 17.736f;
+            var coords = commands[1].Split(',');
+            var x = float.Parse(coords[0]);
+            var y = float.Parse(coords[1]);
+            var z = float.Parse(coords[2]);
+            ExampleButton.transform.position = new Vector3(x, y, z);
+            SpawnObject.Play();
+            if (y == 0f)
+            {
+                ExampleButton.transform.rotation = Quaternion.Euler(0, 0, 0);
+                ExampleButton.transform.position = new Vector3(ExampleButton.transform.position.x + deltaX,
+                    ExampleButton.transform.position.y + 0.5f + deltaY, ExampleButton.transform.position.z + deltaZ);
+            }
+            else if (y == 10f)
+            {
+                ExampleButton.transform.rotation = Quaternion.Euler(180, 0, 0);
+                ExampleButton.transform.position = new Vector3(ExampleButton.transform.position.x + deltaX,
+                    ExampleButton.transform.position.y - 0.5f - deltaY - 9.5f, ExampleButton.transform.position.z + deltaZ);
+            }
+            ExampleButton.SetActive(true);
         }
     }
 
