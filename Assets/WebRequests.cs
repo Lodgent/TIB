@@ -122,11 +122,11 @@ public class WebRequests : MonoBehaviour
         }
         else if (commands[0] == "blue_button")
         {
-            spawn_object(BlueButton, commands, 0f, 0.25f, 42f);
+            spawn_object(BlueButton, commands, -1.75f, 0f, 42f);
         }
         else if (commands[0] == "green_button")
         {
-            spawn_object(GreenButton, commands, 0f, 0.25f, 42f);
+            spawn_object(GreenButton, commands, -1.75f, 0f, 42f);
            
         }
         else if (commands[0] == "ceil_button1")
@@ -139,7 +139,7 @@ public class WebRequests : MonoBehaviour
         }
         else if (commands[0] == "ceil_button3")
         {
-            spawn_object(CeilButton, commands, -2f, -16f, 24f);
+            spawn_object(CeilButton, commands, -2f, -16.3f, 24f);
         }
         else if (commands[0] == "start_game")
         {
