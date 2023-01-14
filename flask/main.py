@@ -3,6 +3,11 @@ from flask_cors import CORS
 import logging
 import sys
 
+# fix windows registry stuff
+import mimetypes
+mimetypes.add_type('application/javascript', '.js')
+mimetypes.add_type('text/css', '.css')
+
 app = Flask(__name__)
 CORS(app)
 logging.basicConfig(filename='logging.log', level=logging.DEBUG)

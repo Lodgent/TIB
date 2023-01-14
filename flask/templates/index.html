@@ -1,15 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html class="main_back">
  <head>
-   <title>!DOCTYPE</title>
+   <title>TIB</title>
+   <link rel="shortcut icon" href="static/images/miniLogo.png" type="image/png">
    <meta charset="utf-8">
    <link rel="stylesheet" href="static/style.css">
  </head>
  <body>
-    <div class="game_field"></div>
+    <div class="menu">
+      <h2>Thinking Inside The Box</h2>
+      <form id="menu" name="my">
+        <div>
+          <input name="code" placeholder="Введите код комнаты" autocomplete="off">
+        </div>
+        <button></button>
+      </form>
+    </div>
+    <div class="creators">
+      <p>Создатели:</p>
+      <img src="static/images/Logo.png">
+    </div>
 
-    <div id = "inventory" class="inv_field"></div>
+    <div class="game_field hidden"></div>
     
-    <script src="static/main.js"></script>
- </body> 
+    <div id = "inventory" class="inv_field hidden">
+      <div class="current_field">
+        <p>Текущая поверхность: <span id="field"></span></p>
+        
+      </div>
+      <div class="inv">
+        <ul class="item_list"></ul>
+      </div>
+      <div class="mover hidden">
+        <p>Двигать платформу</p>
+        <div class="horizontal hidden">
+          <div class="arrow_button left"></div>
+          <div class="arrow_button right"></div>
+        </div>
+        <div class="vertical hidden">
+          <div class="arrow_button up"></div>
+          <div class="arrow_button down"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="static/main.js"></script>
+ </body>
 </html>

@@ -1,0 +1,76 @@
+export let platformDir = "vertical"
+export let platformPosition = 'floor3'
+export let platformStart = 13
+export let platformDelta = 50
+export let timeMovePlatform = 1100
+export let y = 9
+
+export let floor1 = [
+    "EEBEBEBEBEBEBEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",]
+
+export let ceil1 = [
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",]
+
+export let floor2 = [
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEPEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",]
+
+export let ceil2 = [
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEGEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEbEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",]
+
+export let floor3 = [
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEWW",
+    "EEEEEEEEEEEEEWW",]
+
+export let ceil3 = [
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",
+    "EEEEEEEEEEEEEEE",]
+
+
+        
+
